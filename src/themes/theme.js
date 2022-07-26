@@ -40,11 +40,11 @@ const theme = createTheme({
       fontWeight: 'bold'
     },
     h6: {
-      fontSize: '10px',
+      fontSize: '12px',
       fontWeight: 'bold'
     },
     body1: {
-      fontSize: '10px'
+      fontSize: '12px'
     },
     body2: {
       fontSize: '12.5px'

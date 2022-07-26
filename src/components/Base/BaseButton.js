@@ -4,7 +4,7 @@ import {
   ExitToAppRounded,
   PeopleOutlined
 } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,8 +32,28 @@ const CustomButton = styled(Button)({
   }
 });
 
+const ButtonChild = (props) => {
+  const { loading = false, children } = props;
+
+  return (
+    <>
+      {loading ? (
+        <CircularProgress
+          variant="indeterminate"
+          color="inherit"
+          disableShrink
+          size={25}
+          thickness={4}
+        />
+      ) : (
+        children
+      )}
+    </>
+  );
+};
+
 const BaseButton = (props) => {
-  const { shape, children, link, removeIcon, ...rest } = props;
+  const { shape, children, link, removeIcon, loading = false, ...rest } = props;
 
   const navigate = useNavigate();
 
@@ -49,7 +69,7 @@ const BaseButton = (props) => {
           }}
           onClick={() => navigate(link)}
           {...rest}>
-          {children}
+          <ButtonChild loading={loading}>{children}</ButtonChild>
           {!removeIcon && <AddCircleRounded />}
         </CustomButton>
       ) : shape === 'supervise' ? (
@@ -63,7 +83,7 @@ const BaseButton = (props) => {
           startIcon={<PeopleOutlined />}
           onClick={() => navigate(link)}
           {...rest}>
-          {children}
+          <ButtonChild loading={loading}>{children}</ButtonChild>
         </CustomButton>
       ) : shape === 'error' ? (
         <Button
@@ -79,7 +99,7 @@ const BaseButton = (props) => {
           variant="outlined"
           onClick={() => navigate(link)}
           {...rest}>
-          {children}
+          <ButtonChild loading={loading}>{children}</ButtonChild>
         </Button>
       ) : shape === 'exit' ? (
         <Button
@@ -96,7 +116,7 @@ const BaseButton = (props) => {
           startIcon={<ExitToAppRounded />}
           onClick={() => navigate(link)}
           {...rest}>
-          {children}
+          <ButtonChild loading={loading}>{children}</ButtonChild>
         </Button>
       ) : shape === 'delete' ? (
         <Button
@@ -113,7 +133,7 @@ const BaseButton = (props) => {
           startIcon={<DeleteOutlined />}
           onClick={() => navigate(link)}
           {...rest}>
-          {children}
+          <ButtonChild loading={loading}>{children}</ButtonChild>
         </Button>
       ) : shape === 'outlined' ? (
         <Button
@@ -128,7 +148,7 @@ const BaseButton = (props) => {
           variant="outlined"
           onClick={() => navigate(link)}
           {...rest}>
-          {children}
+          <ButtonChild loading={loading}>{children}</ButtonChild>
         </Button>
       ) : (
         <CustomButton
@@ -139,7 +159,7 @@ const BaseButton = (props) => {
           }}
           onClick={() => navigate(link)}
           {...rest}>
-          {children}
+          <ButtonChild loading={loading}>{children}</ButtonChild>
         </CustomButton>
       )}
     </>

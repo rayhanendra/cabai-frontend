@@ -94,7 +94,7 @@ export const addSupervisi = createAsyncThunk('auth/addSupervisi', async (data, t
   }
 });
 
-const initialState = { isLoggedIn: user ? true : false, user: null, parentUser: null };
+const initialState = { isLoggedIn: user ? true : false, user: null, parentUser: null, status: '' };
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -107,21 +107,31 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(PURGE, () => initialState);
+    builder.addCase(signup.pending, (state) => {
+      state.status = 'loading';
+    });
     builder.addCase(signup.fulfilled, (state, action) => {
       state.isLoggedIn = true;
       state.user = action.payload.user;
+      state.status = 'success';
     });
     builder.addCase(signup.rejected, (state) => {
       state.isLoggedIn = false;
+      state.status = 'failed';
+    });
+    builder.addCase(signin.pending, (state, action) => {
+      state.status = 'loading';
     });
     builder.addCase(signin.fulfilled, (state, action) => {
       state.isLoggedIn = true;
       state.user = action.payload.user;
       state.parentUser = action.payload.user;
+      state.status = 'success';
     });
     builder.addCase(signin.rejected, (state) => {
       state.isLoggedIn = false;
       state.user = null;
+      state.status = 'failed';
     });
     builder.addCase(logout.fulfilled, (state) => {
       state.isLoggedIn = false;

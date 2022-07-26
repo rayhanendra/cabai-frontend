@@ -1,4 +1,4 @@
-import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Paper, Typography } from '@mui/material';
 import React from 'react';
 import RestoreIcon from '@mui/icons-material/Restore';
 import { HomeRounded, WarehouseRounded } from '@mui/icons-material';
@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import IconPenjualan from 'public/images/icons/IconPenjualan';
 import theme from 'themes/theme';
 import IconUsang from 'public/images/icons/IconUsang';
+import IconTanamBaru from 'public/images/icons/IconTanamBaru';
 
 const TheBottomNavigation = (props) => {
   const { role } = props;
@@ -18,7 +19,7 @@ const TheBottomNavigation = (props) => {
         switch (route) {
           case '/petani/beranda':
             return 0;
-          case '/petani/stok':
+          case '/petani/lahan':
             return 1;
           case '/petani/transaksi':
             return 2;
@@ -51,7 +52,7 @@ const TheBottomNavigation = (props) => {
 
   const actionsPetani = [
     { label: 'Beranda', icon: <HomeRounded />, link: () => navigate('/petani/beranda') },
-    { label: 'Stok', icon: <WarehouseRounded />, link: () => navigate('/petani/stok') },
+    { label: 'Lahan', icon: <IconTanamBaru />, link: () => navigate('/petani/lahan') },
     {
       label: 'Transaksi',
       icon: <IconPenjualan />,
@@ -115,7 +116,11 @@ const TheBottomNavigation = (props) => {
         {actions.map((action, index) => (
           <BottomNavigationAction
             key={index}
-            label={action.label}
+            label={
+              <Typography noWrap variant="body1">
+                {action.label}
+              </Typography>
+            }
             icon={action.icon}
             onClick={action.link}
             sx={{

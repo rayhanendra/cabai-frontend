@@ -82,17 +82,15 @@ function UlangTransaksiPedagang() {
                   formikProps={formikProps}
                 />
                 <FormikController
-                  control="textfield"
+                  control="number"
                   label="Jumlah Dijual (kg)"
                   name="jumlahDijual"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <FormikController
-                  control="textfield"
+                  control="number"
                   label="Harga Per kg (Rp)"
                   name="hargaJual"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <Typography variant="h5">Dijual Kepada</Typography>

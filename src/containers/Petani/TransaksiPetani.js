@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 import BaseButton from 'components/Base/BaseButton';
-import BaseTabs from 'components/Base/BaseTabs';
+// import BaseTabs from 'components/Base/BaseTabs';
 import TheBottomNavigation from 'components/Base/TheBottomNavigation';
 import TheProfileHeader from 'components/Base/TheProfileHeader';
 import CardTransaksi from 'components/Page/Petani/CardTransaksi';
@@ -30,10 +30,10 @@ function TransaksiPetani() {
           fullWidth>
           <Typography variant="h5">Catat Transaksi</Typography>
         </BaseButton>
-        <BaseTabs
+
+        {/* <BaseTabs
           variant="contained"
           labels={['Cabai Merah Besar', 'Cabai Merah Keriting', 'Cabai Rawit Merah']}>
-          {/* CMB */}
           <Box display="flex" flexDirection="column" gap={1}>
             <Typography>Total transaksi Cabai Merah Besar</Typography>
             <Box display="flex" alignItems="center" justifyContent="space-between">
@@ -48,7 +48,7 @@ function TransaksiPetani() {
               <Typography>Hasil Transaksi Cabai Merah Besar (kg)</Typography>
             </Box>
           </Box>
-          {/* CMK */}
+
           <Box display="flex" flexDirection="column" gap={1}>
             <Typography>Total transaksi Cabai Merah Besar</Typography>
             <Box display="flex" alignItems="center" justifyContent="space-between">
@@ -63,7 +63,7 @@ function TransaksiPetani() {
               <Typography>Hasil Transaksi Cabai Merah Keriting (kg)</Typography>
             </Box>
           </Box>
-          {/* CRM */}
+
           <Box display="flex" flexDirection="column" gap={1}>
             <Typography>Total transaksi Cabai Merah Besar</Typography>
             <Box display="flex" alignItems="center" justifyContent="space-between">
@@ -78,12 +78,12 @@ function TransaksiPetani() {
               <Typography>Hasil Transaksi Cabai Rawit Merah (kg)</Typography>
             </Box>
           </Box>
-        </BaseTabs>
+        </BaseTabs> */}
 
         <Box display="flex" flexDirection="column" gap={1}>
           <Typography variant="h5">Transaksi Diajukan</Typography>
           <Box display="flex" alignItems="center" justifyContent="space-between">
-            <Typography>Menunggu pembeli menerima transaksi anda</Typography>
+            <Typography maxWidth="70%">Menunggu pembeli menerima transaksi anda</Typography>
             <Typography variant="h6" onClick={() => navigate('/petani/riwayat')}>
               Lihat Semua
             </Typography>
@@ -99,7 +99,7 @@ function TransaksiPetani() {
           <Stack gap={1}>
             <Typography variant="h5">Daftar Transaksi</Typography>
             <Stack direction="row" justifyContent="space-between">
-              <Typography>Daftar transaksi yang anda sudah lakukan</Typography>
+              <Typography maxWidth="70%">Daftar transaksi yang anda sudah lakukan</Typography>
               <Typography variant="h6" onClick={() => navigate('/petani/riwayat')}>
                 Lihat Semua
               </Typography>

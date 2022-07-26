@@ -63,6 +63,14 @@ const optionsRole = [
   }
 ];
 
+const optionsGradeCabai = [
+  { value: 'a', label: 'A' },
+  { value: 'b', label: 'B' },
+  { value: 'c', label: 'C' },
+  { value: 'd', label: 'D' },
+  { value: 'n', label: '-' }
+];
+
 const CabaiEnum = Object.freeze({
   cabaiMerahBesar: 'Cabai Merah Besar',
   cabaiMerahKeriting: 'Cabai Merah Keriting',
@@ -87,4 +95,20 @@ const RoleEnum = Object.freeze({
   dinasPertanianKabupaten: 'Dinas Pertanian Kabupaten'
 });
 
-export { optionsTipeCabai, optionsPedagang, optionsRole, CabaiEnum, StatusEnum, RoleEnum };
+const GradeEnum = Object.freeze({
+  a: 'A',
+  b: 'B',
+  c: 'C',
+  d: 'D'
+});
+
+export {
+  optionsTipeCabai,
+  optionsPedagang,
+  optionsRole,
+  optionsGradeCabai,
+  CabaiEnum,
+  StatusEnum,
+  RoleEnum,
+  GradeEnum
+};

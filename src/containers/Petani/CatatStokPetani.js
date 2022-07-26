@@ -82,38 +82,34 @@ function CatatStokPetani() {
                   formikProps={formikProps}
                 />
                 <FormikController
-                  control="textfield"
+                  control="number"
                   id="totalHasilPanen"
                   name="totalHasilPanen"
                   label="Total Hasil Panen (kg)"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <FormikController
-                  control="textfield"
+                  control="number"
                   fullWidth
                   id="hasilPanenSukses"
                   name="hasilPanenSukses"
                   label="Hasil Panen Sukses (kg)"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <FormikController
-                  control="textfield"
+                  control="number"
                   fullWidth
                   id="hasilPanenGagal"
                   name="hasilPanenGagal"
                   label="Hasil Panen Gagal (kg)"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <FormikController
-                  control="textfield"
+                  control="number"
                   fullWidth
                   id="hargaJual"
                   name="hargaJual"
                   label="Hasil jual per kg (Rp)"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <Box mt={2}>

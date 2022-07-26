@@ -35,7 +35,7 @@ export function getDateFormat(localDate) {
   return moment(localDate).format();
 }
 export function momentFormat(date) {
-  return moment(date).format('LLLL');
+  return moment(date).format('LL');
 }
 export function momentAdd(date, options) {
   return moment(date).add(options);

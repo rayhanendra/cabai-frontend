@@ -9,6 +9,13 @@ export const formatRupiah = (money) => {
 
 export const formatNumber = (number) => {
   if (!number) return;
-  var dots = number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
-  return `${dots} kg`;
+  const round = number.toFixed(1);
+
+  const toComma = round.toString().replace('.', ',');
+  const toDecimal = toComma.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
+  return toDecimal;
+};
+
+export const toKuintal = (number) => {
+  return number / 100;
 };

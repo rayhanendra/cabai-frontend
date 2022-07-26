@@ -3,6 +3,8 @@ import RouterConfig from 'navigation/RouterConfig';
 import Layout from 'layouts/Layout';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from 'themes/theme';
+import BaseLoadingRedux from 'components/Base/BaseLoadingRedux';
+import ScrollToTop from 'navigation/ScrollToTop';
 
 function App() {
   return (
@@ -10,8 +12,11 @@ function App() {
       <CssBaseline />
       <BrowserRouter>
         <ThemeProvider theme={theme}>
+          <BaseLoadingRedux />
           <Layout>
-            <RouterConfig />
+            <ScrollToTop>
+              <RouterConfig />
+            </ScrollToTop>
           </Layout>
         </ThemeProvider>
       </BrowserRouter>

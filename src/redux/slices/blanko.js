@@ -19,7 +19,19 @@ export const addBlanko = createAsyncThunk('blanko/addBlanko', async (data, thunk
   return response.data;
 });
 
-const initialState = { riwayat: [], status: null, detail: {} };
+export const checkBlanko = createAsyncThunk('blanko/checkBlanko', async (data, thunkAPI) => {
+  const response = await BlankoService.checkBlanko(data);
+  thunkAPI.dispatch(setMessage(response));
+  return response.data;
+});
+
+export const syncBlanko = createAsyncThunk('blanko/syncBlanko', async (data, thunkAPI) => {
+  const response = await BlankoService.syncBlanko(data);
+  thunkAPI.dispatch(setMessage(response));
+  return response.data;
+});
+
+const initialState = { riwayat: [], status: null, detail: {}, check: {} };
 const blankoSlice = createSlice({
   name: 'blanko',
   initialState: initialState,
@@ -52,6 +64,25 @@ const blankoSlice = createSlice({
       state.status = 'success';
     });
     builder.addCase(addBlanko.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(checkBlanko.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(checkBlanko.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.check = action.payload;
+    });
+    builder.addCase(checkBlanko.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(syncBlanko.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(syncBlanko.fulfilled, (state) => {
+      state.status = 'success';
+    });
+    builder.addCase(syncBlanko.rejected, (state) => {
       state.status = 'failed';
     });
   }

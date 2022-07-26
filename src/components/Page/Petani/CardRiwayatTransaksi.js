@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import BaseCard from 'components/Base/BaseCard';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,35 +11,25 @@ const CardRiwayatTransaksi = (props) => {
 
   const navigate = useNavigate();
 
+  const data = [
+    { label: 'Status', value: StatusEnum[item.statusTransaksi] },
+    { label: 'Tipe Cabai', value: CabaiEnum[item.lahan.tipeCabai] },
+    { label: 'Jumlah Dijual', value: `${formatNumber(item.jumlahDijual)} kuintal` },
+    { label: 'Harga Per kg', value: formatRupiah(item.hargaJual) },
+    { label: 'Dijual Kepada', value: `${item.penjual.name} (${RoleEnum[item.penjual.role]})` }
+  ];
+
   return (
-    <BaseCard
-      display="flex"
-      flexDirection="column"
-      gap={1}
-      onClick={() => navigate(`detail-transaksi/${item._id}`)}>
-      <Typography variant="h6">{momentFormat(item.tanggalPencatatan)}</Typography>
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Typography>Status</Typography>
-        <Typography variant="h6">{StatusEnum[item.statusTransaksi]}</Typography>
-      </Box>
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Typography>Tipe Cabai</Typography>
-        <Typography variant="h6">{CabaiEnum[item.tipeCabai]}</Typography>
-      </Box>
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Typography>Jumlah Dijual</Typography>
-        <Typography variant="h6">{formatNumber(item.jumlahDijual)}</Typography>
-      </Box>
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Typography>Harga Per kg</Typography>
-        <Typography variant="h6">{formatRupiah(item.hargaJual)}</Typography>
-      </Box>
-      <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Typography>Dijual Kepada</Typography>
-        <Typography variant="h6">
-          {item.pembeli.name} ({RoleEnum[item.pembeli.role]})
-        </Typography>
-      </Box>
+    <BaseCard onClick={() => navigate(`/petani/transaksi/detail-transaksi/${item._id}`)}>
+      <Stack gap={1}>
+        <Typography variant="h6">{momentFormat(item.tanggalPencatatan)}</Typography>
+        {data.map(({ label, value }, index) => (
+          <Stack key={index} direction="row" justifyContent="space-between">
+            <Typography>{label}</Typography>
+            <Typography variant="h6">{value}</Typography>
+          </Stack>
+        ))}
+      </Stack>
     </BaseCard>
   );
 };

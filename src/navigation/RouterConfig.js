@@ -9,12 +9,14 @@ import BerandaPetani from 'containers/Petani/BerandaPetani';
 import TransaksiPetani from 'containers/Petani/TransaksiPetani';
 import RiwayatPetani from 'containers/Petani/RiwayatPetani';
 import StokPetani from 'containers/Petani/StokPetani';
-import IsiBlankoPetani from 'containers/Petani/IsiBlankoPetani';
+import CatatBlankoPetani from 'containers/Petani/CatatBlankoPetani';
 import DetailBlankoPetani from 'containers/Petani/DetailBlankoPetani';
 import DetailTransaksiPetani from 'containers/Petani/DetailTransaksiPetani';
 import CatatStokPetani from 'containers/Petani/CatatStokPetani';
 import DetailStokPetani from 'containers/Petani/DetailStokPetani';
 import UlangTransaksiPetani from 'containers/Petani/UlangTransaksiPetani';
+import LahanPetani from 'containers/Petani/LahanPetani';
+import CatatLahanPetani from 'containers/Petani/CatatLahanPetani';
 
 import IndexPedagang from 'containers/Pedagang/IndexPedagang';
 import BerandaPedagang from 'containers/Pedagang/BerandaPedagang';
@@ -37,6 +39,8 @@ import MasukPdh from 'containers/Pdh/MasukPdh';
 
 import IndexDinas from 'containers/Dinas/IndexDinas';
 import BerandaDinas from 'containers/Dinas/BerandaDinas';
+import DetailLahanPetani from 'containers/Petani/DetailLahanPetani';
+import UbahModalPetani from 'containers/Petani/UbahModalPetani';
 
 function RouterConfig() {
   return (
@@ -50,8 +54,12 @@ function RouterConfig() {
       <Route path="petani" element={<IndexPetani />}>
         <Route path="/petani" element={<Navigate to={'beranda'} replace />} />
         <Route path="beranda" element={<BerandaPetani />} />
-        <Route path="beranda/isi-blanko" element={<IsiBlankoPetani />} />
+        <Route path="beranda/catat-blanko" element={<CatatBlankoPetani />} />
         <Route path="beranda/detail-blanko/:id" element={<DetailBlankoPetani />} />
+        <Route path="lahan" element={<LahanPetani />} />
+        <Route path="lahan/catat-lahan" element={<CatatLahanPetani />} />
+        <Route path="lahan/detail-lahan/:id" element={<DetailLahanPetani />} />
+        <Route path="lahan/ubah-modal/:id" element={<UbahModalPetani />} />
         <Route path="stok" element={<StokPetani />} />
         <Route path="stok/catat-stok" element={<CatatStokPetani />} />
         <Route path="stok/detail-stok/:id" element={<DetailStokPetani />} />

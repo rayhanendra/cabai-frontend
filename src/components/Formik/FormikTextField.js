@@ -2,11 +2,12 @@ import { TextField } from '@mui/material';
 import { Field } from 'formik';
 
 const BaseTextField = (props) => {
-  const { form, field, ...rest } = props;
+  const { form, field, disabled, ...rest } = props;
   return (
     <TextField
       {...field}
       {...rest}
+      disabled={disabled}
       // focused={!form.isSubmitting && !form.errors[field.name] && form.touched[field.name]}
       error={!!form.errors[field.name] && form.touched[field.name]}
       helperText={
@@ -21,8 +22,8 @@ const BaseTextField = (props) => {
 };
 
 const FormikTextField = (props) => {
-  const { ...rest } = props;
-  return <Field component={BaseTextField} {...rest} />;
+  const { disabled, ...rest } = props;
+  return <Field component={BaseTextField} disabled={disabled} {...rest} />;
 };
 
 export default FormikTextField;

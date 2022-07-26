@@ -21,12 +21,22 @@ const getStokByType = (type) => {
     headers: authHeader()
   });
 };
+const getSyncStok = () => {
+  return axios.put(
+    API_URL + 'stok/sinkron',
+    {},
+    {
+      headers: authHeader()
+    }
+  );
+};
 
 const stokService = {
   getDashboardStok,
   addStok,
   getAllStok,
   getStokById,
-  getStokByType
+  getStokByType,
+  getSyncStok
 };
 export default stokService;

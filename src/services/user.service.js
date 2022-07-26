@@ -8,7 +8,7 @@ const getProfile = (id) => {
 };
 
 const getPedagangByRole = (role) => {
-  return axios.get(API_URL + 'transaksi/lihatpedagang/' + role, { headers: authHeader() });
+  return axios.get(API_URL + 'user/lihatpedagang/' + role, { headers: authHeader() });
 };
 
 const getAllProvinsi = () => {

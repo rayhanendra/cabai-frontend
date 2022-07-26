@@ -81,11 +81,7 @@ function MasukPdh() {
                   type="password"
                   formikProps={formikProps}
                 />
-                <BaseButton
-                  type="submit"
-                  disabled={
-                    !(formikProps.isValid && formikProps.dirty) || formikProps.isSubmitting
-                  }>
+                <BaseButton type="submit" disabled={!(formikProps.isValid && formikProps.dirty)}>
                   {loading ? 'Memuat...' : 'Masuk'}
                 </BaseButton>
               </Stack>

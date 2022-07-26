@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getBlankoById } from 'redux/slices/blanko';
+import { CabaiEnum } from 'utils/constants';
 import { momentFormat } from 'utils/MomentFormat';
 
 function DetailBlankoPetani() {
@@ -17,7 +18,7 @@ function DetailBlankoPetani() {
   }, [dispatch]);
 
   const data = [
-    { label: 'Tipe Cabai', value: detail[0]?.tipeCabai },
+    { label: 'Tipe Cabai', value: CabaiEnum[detail[0]?.tipeCabai] },
     { label: 'Luas tanaman akhir bulan lalu (Ha)', value: detail[0]?.luasTanamanAkhirBulanLalu },
     { label: 'Luas panen habis / dibongkar (Ha)', value: detail[0]?.luasPanenHabis },
     { label: 'Luas panen belum habis (Ha)', value: detail[0]?.luasPanenBelumHabis },
@@ -36,7 +37,7 @@ function DetailBlankoPetani() {
   return (
     <>
       <BaseHeader label={`Blanko - ${momentFormat(detail[0]?.tanggalPencatatan)}`} to={-1} />
-      <BaseListDetail data={data} />
+      <BaseListDetail data={data} p={2} />
     </>
   );
 }

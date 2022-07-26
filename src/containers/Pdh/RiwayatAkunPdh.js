@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 function RiwayatAkunPdh() {
   const { petani } = useSelector((state) => state.pdh);
-  console.log(petani);
+
   return (
     <>
       <BaseHeader label="Riwayat Akun" to={-1} />

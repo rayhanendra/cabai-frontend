@@ -10,6 +10,7 @@ import transaksiSlice from './slices/transaksi';
 import usangSlice from './slices/usang';
 import blankoReducer from './slices/blanko';
 import pdhReducer from './slices/pdh';
+import lahanReducer from './slices/lahan';
 
 const persistConfig = {
   key: 'root',
@@ -24,7 +25,8 @@ const reducer = combineReducers({
   transaksi: transaksiSlice,
   usang: usangSlice,
   blanko: blankoReducer,
-  pdh: pdhReducer
+  pdh: pdhReducer,
+  lahan: lahanReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

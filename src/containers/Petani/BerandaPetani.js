@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getAllBlanko } from 'redux/slices/blanko';
-import theme from 'themes/theme';
+// import theme from 'themes/theme';
 
 function BerandaPetani() {
   const navigate = useNavigate();
@@ -23,17 +23,17 @@ function BerandaPetani() {
     <>
       <TheProfileHeader />
       <Box display="flex" flexDirection="column" gap={3} p={2} mb="56px">
-        <Box>
+        {/* <Box>
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus, felis netus neque,
             sapien lobortis quisque. Mi id amet sed elit, ultrices. Dapibus vestibulum viverra est
             habitasse ultrices pretium nisi, dis. Magna.
           </Typography>
-        </Box>
-        <BaseButton shape="withicon" link="isi-blanko" size="large" variant="outlined" fullWidth>
-          <Typography variant="h5">Isi Blanko</Typography>
+        </Box> */}
+        <BaseButton shape="withicon" link="catat-blanko" size="large" variant="outlined" fullWidth>
+          <Typography variant="h5">Catat Blanko</Typography>
         </BaseButton>
-        <Box
+        {/* <Box
           display={'flex'}
           flexDirection={'column'}
           gap={3}
@@ -50,7 +50,7 @@ function BerandaPetani() {
           bgcolor={theme.palette.dark.light}
           borderRadius={2}>
           <Typography variant="h4">Total Penjualan</Typography>
-        </Box>
+        </Box> */}
         <Box display="flex" flexDirection="column" gap={2}>
           <Box display="flex" alignItems="center" justifyContent="space-between">
             <Typography variant="h5">Riwayat Blanko</Typography>

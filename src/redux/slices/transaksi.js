@@ -23,8 +23,8 @@ export const deleteTransaksi = createAsyncThunk(
   'transaksi/deleteTransaksi',
   async (id, thunkAPI) => {
     const response = await TransaksiService.deleteTransaksi(id);
-    thunkAPI.dispatch(setMessage(response));
     thunkAPI.dispatch(getAllTransaksi());
+    thunkAPI.dispatch(setMessage(response));
     return response.data;
   }
 );
@@ -33,8 +33,8 @@ export const acceptTransaksi = createAsyncThunk(
   'transaksi/acceptTransaksi',
   async (id, thunkAPI) => {
     const response = await TransaksiService.acceptTransaksi(id);
-    thunkAPI.dispatch(setMessage(response.data.message));
     thunkAPI.dispatch(getAllTransaksi());
+    thunkAPI.dispatch(setMessage(response));
     return response.data;
   }
 );
@@ -43,8 +43,8 @@ export const declineTransaksi = createAsyncThunk(
   'transaksi/declineTransaksi',
   async (id, thunkAPI) => {
     const response = await TransaksiService.declineTransaksi(id);
-    thunkAPI.dispatch(setMessage(response.data.message));
     thunkAPI.dispatch(getAllTransaksi());
+    thunkAPI.dispatch(setMessage(response));
     return response.data;
   }
 );
@@ -53,7 +53,7 @@ export const editTransaksi = createAsyncThunk(
   'transaksi/editTransaksi',
   async ({ id, formData }, thunkAPI) => {
     const response = await TransaksiService.editTransaksi({ id, formData });
-    thunkAPI.dispatch(setMessage(response.data.message));
+    thunkAPI.dispatch(setMessage(response));
     return response.data;
   }
 );

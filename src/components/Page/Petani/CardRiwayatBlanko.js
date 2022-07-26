@@ -1,14 +1,17 @@
 import { Stack, Typography } from '@mui/material';
 import BaseCard from 'components/Base/BaseCard';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CabaiEnum } from 'utils/constants';
 import { momentFormat } from 'utils/MomentFormat';
 
 const CardRiwayatBlanko = (props) => {
   const { item } = props;
 
+  const navigate = useNavigate();
+
   return (
-    <BaseCard>
+    <BaseCard onClick={() => navigate(`/petani/beranda/detail-blanko/${item._id}`)}>
       <Stack gap={1}>
         <Typography variant="h6">{momentFormat(item.createdAt)}</Typography>
         <Stack direction="row" justifyContent="space-between">

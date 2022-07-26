@@ -4,27 +4,29 @@ import TheBottomNavigation from 'components/Base/TheBottomNavigation';
 import TheProfileHeader from 'components/Base/TheProfileHeader';
 import CardRiwayatBlanko from 'components/Page/Petani/CardRiwayatBlanko';
 import CardRiwayatTransaksi from 'components/Page/Petani/CardRiwayatTransaksi';
-import CardRiwayatStok from 'components/Page/Petani/CardRiwayatStok';
 import IconNotFound from 'public/images/icons/IconNotFound';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllStok } from 'redux/slices/stok';
 import { getAllTransaksi } from 'redux/slices/transaksi';
 import { getAllBlanko } from 'redux/slices/blanko';
+import { getAllLahan } from 'redux/slices/lahan';
+import CardRiwayatLahan from 'components/Page/Petani/CardRiwayatLahan';
 
 // import iconNotFound from 'public/images/icons/icon_riwayat_notfound.svg';
 
 function RiwayatPetani() {
   const dispatch = useDispatch();
 
-  const { stoks: riwayatStok } = useSelector((state) => state.stok);
-  const { riwayat: riwayatTransaksi } = useSelector((state) => state.transaksi);
   const { riwayat: riwayatBlanko } = useSelector((state) => state.blanko);
+  const { riwayat: riwayatLahan } = useSelector((state) => state.lahan);
+  const { riwayat: riwayatTransaksi } = useSelector((state) => state.transaksi);
+
+  console.log(riwayatTransaksi);
 
   useEffect(() => {
-    dispatch(getAllStok());
     dispatch(getAllTransaksi());
     dispatch(getAllBlanko());
+    dispatch(getAllLahan());
   }, [dispatch]);
 
   return (
@@ -34,7 +36,7 @@ function RiwayatPetani() {
         <Box mb={2}>
           <Typography variant="h4">Riwayat</Typography>
         </Box>
-        <BaseTabs labels={['Blanko', 'Stok', 'Transaksi']}>
+        <BaseTabs labels={['Blanko', 'Lahan', 'Transaksi']}>
           <Stack gap={1.5}>
             {riwayatBlanko ? (
               riwayatBlanko.map((item, index) => <CardRiwayatBlanko key={index} item={item} />)
@@ -47,8 +49,8 @@ function RiwayatPetani() {
           </Stack>
 
           <Stack gap={1.5}>
-            {riwayatStok ? (
-              riwayatStok.map((item, index) => <CardRiwayatStok key={index} item={item} />)
+            {riwayatLahan ? (
+              riwayatLahan.map((item, index) => <CardRiwayatLahan key={index} item={item} />)
             ) : (
               <Box>
                 <IconNotFound />

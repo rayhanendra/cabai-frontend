@@ -9,6 +9,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import FormikController from 'components/Formik/FormikController';
 import { optionsRole } from 'utils/constants';
 import UserService from 'services/user.service';
+// import BaseLoadingRedux from 'components/Base/BaseLoadingRedux';
 
 function Daftar() {
   const { message } = useSelector((state) => state.message);
@@ -229,9 +230,7 @@ function Daftar() {
                   <BaseButton
                     fullWidth
                     type="submit"
-                    disabled={
-                      !(formikProps.isValid && formikProps.dirty) || formikProps.isSubmitting
-                    }>
+                    disabled={!(formikProps.isValid && formikProps.dirty) || loading}>
                     {loading ? 'Memuat...' : 'Daftar'}
                   </BaseButton>
                 </Box>

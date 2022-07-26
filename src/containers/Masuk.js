@@ -83,11 +83,7 @@ function Masuk() {
                   label="Password"
                   type="password"
                 />
-                <BaseButton
-                  type="submit"
-                  disabled={
-                    !(formikProps.isValid && formikProps.dirty) || formikProps.isSubmitting
-                  }>
+                <BaseButton type="submit" disabled={!(formikProps.isValid && formikProps.dirty)}>
                   {loading ? 'Memuat...' : 'Masuk'}
                 </BaseButton>
               </Stack>

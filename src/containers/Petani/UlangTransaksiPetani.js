@@ -17,7 +17,7 @@ function UlangTransaksiPetani() {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
 
-  const { detail } = useSelector((state) => state.transaksi);
+  const { detail } = useSelector((state) => state.notification);
 
   useEffect(() => {
     dispatch(reset());
@@ -82,17 +82,15 @@ function UlangTransaksiPetani() {
                   formikProps={formikProps}
                 />
                 <FormikController
-                  control="textfield"
+                  control="number"
                   label="Jumlah Dijual (kg)"
                   name="jumlahDijual"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <FormikController
-                  control="textfield"
+                  control="number"
                   label="Harga Per kg (Rp)"
                   name="hargaJual"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <Typography variant="h5">Dijual Kepada</Typography>
@@ -110,9 +108,7 @@ function UlangTransaksiPetani() {
                   <BaseButton
                     fullWidth
                     type="submit"
-                    disabled={
-                      !(formikProps.isValid && formikProps.dirty) || formikProps.isSubmitting
-                    }>
+                    disabled={!(formikProps.isValid && formikProps.dirty)}>
                     {loading ? 'Memuat...' : 'Kirim'}
                   </BaseButton>
                 </Box>

@@ -25,11 +25,12 @@ const BaseTextField = (props) => {
 };
 
 const FormikDatePicker = (props) => {
-  const { formikProps, name, ...rest } = props;
+  const { formikProps, name, month, ...rest } = props;
 
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <MobileDatePicker
+        views={month ? ['month', 'year'] : ['day']}
         name={name}
         value={formikProps.values[name]}
         onChange={(value) => {
@@ -38,6 +39,7 @@ const FormikDatePicker = (props) => {
         renderInput={(params) => (
           <Field component={BaseTextField} formikProps={formikProps} {...params} />
         )}
+        disableFuture
         {...rest}
       />
     </LocalizationProvider>

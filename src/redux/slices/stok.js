@@ -24,6 +24,11 @@ export const getStokById = createAsyncThunk('stok/getStokById', async (id) => {
   return response.data.data;
 });
 
+export const getSyncStok = createAsyncThunk('stok/getSyncStok', async () => {
+  const response = await StokService.getSyncStok();
+  return response.data.data;
+});
+
 const initialState = { dashboard: {}, status: '', stoks: [], detail: {} };
 const stokSlice = createSlice({
   name: 'stok',
@@ -67,6 +72,16 @@ const stokSlice = createSlice({
       state.detail = action.payload;
     });
     builder.addCase(getStokById.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(getSyncStok.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(getSyncStok.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.dashboard = action.payload;
+    });
+    builder.addCase(getSyncStok.rejected, (state) => {
       state.status = 'failed';
     });
   }

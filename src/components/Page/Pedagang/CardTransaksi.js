@@ -28,7 +28,6 @@ const CardTransaksi = (props) => {
   if (!item) return <Fragment />;
   return (
     <>
-      wdw
       <BaseCard
         title={`Status: ${StatusEnum[item.statusTransaksi]} - ${momentFormat(item.createdAt)}`}
         link={`detail-transaksi/${item._id}`}

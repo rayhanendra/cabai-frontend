@@ -18,10 +18,20 @@ const addBlanko = async (data) => {
   return axios.post(API_URL + 'blanko/tambahblanko', data, { headers: authHeader() });
 };
 
+const checkBlanko = async (data) => {
+  return axios.post(API_URL + 'blanko/cekblanko', data, { headers: authHeader() });
+};
+
+const syncBlanko = async (data) => {
+  return axios.put(API_URL + 'blanko/sinkronblanko', data, { headers: authHeader() });
+};
+
 const blankoService = {
   getAllBlanko,
   getBlankoById,
   getBlankoByType,
-  addBlanko
+  addBlanko,
+  checkBlanko,
+  syncBlanko
 };
 export default blankoService;

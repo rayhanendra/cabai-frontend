@@ -81,7 +81,7 @@ function CekBlankoPetani(props) {
                 <BaseButton
                   fullWidth
                   type="submit"
-                  disabled={!(formikProps.isValid && formikProps.dirty)}>
+                  disabled={!(formikProps.isValid && formikProps.dirty) || loading}>
                   {loading ? 'Memuat...' : 'Cek Blanko'}
                 </BaseButton>
               </Box>
@@ -97,6 +97,8 @@ function KirimBlankoPetani(props) {
   const { formBlanko } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const { check } = useSelector((state) => state.blanko);
 
@@ -117,12 +119,13 @@ function KirimBlankoPetani(props) {
   ];
 
   const handleSubmit = () => {
-    console.log('handle submit');
     const formData = urlFormData(formBlanko);
+    setLoading(true);
     dispatch(syncBlanko(formData))
       .unwrap()
       .then(() => {
         navigate(-1);
+        setLoading(false);
       })
       .catch(() => {});
   };
@@ -131,7 +134,7 @@ function KirimBlankoPetani(props) {
     <>
       <Stack p={2} gap={2}>
         <BaseListDetail data={data} />
-        <BaseButton type="submit" onClick={handleSubmit}>
+        <BaseButton type="submit" onClick={handleSubmit} disabled={loading}>
           Kirim Blanko
         </BaseButton>
       </Stack>

@@ -20,12 +20,12 @@ function CardRiwayatLahan(props) {
       value: formatNumber(item.jumlahBatang)
     },
     {
-      label: 'Total Hasil Panen (kwintal)',
-      value: formatNumber(item.jumlahPanen)
+      label: 'Total Hasil Panen (kuintal)',
+      value: formatNumber(item.jumlahPanen) ?? '-'
     },
     {
       label: 'Total Penjualan',
-      value: formatNumber(item.jumlahPenjualan)
+      value: formatNumber(item.jumlahPenjualan) ?? '-'
     }
   ];
 

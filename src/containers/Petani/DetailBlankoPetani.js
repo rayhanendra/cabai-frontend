@@ -19,18 +19,27 @@ function DetailBlankoPetani() {
 
   const data = [
     { label: 'Tipe Cabai', value: CabaiEnum[detail[0]?.tipeCabai] },
-    { label: 'Luas tanaman akhir bulan lalu (Ha)', value: detail[0]?.luasTanamanAkhirBulanLalu },
-    { label: 'Luas panen habis / dibongkar (Ha)', value: detail[0]?.luasPanenHabis },
-    { label: 'Luas panen belum habis (Ha)', value: detail[0]?.luasPanenBelumHabis },
-    { label: 'Luas rusak/tidak berhasil/puso (Ha)', value: detail[0]?.luasRusak },
-    { label: 'Luas penanaman baru/tambah tanam (Ha)', value: detail[0]?.luasPenanamanBaru },
+    {
+      label: 'Luas tanaman akhir bulan lalu (Ha)',
+      value: detail[0]?.luasTanamanAkhirBulanLalu ?? '-'
+    },
+    { label: 'Luas panen habis / dibongkar (Ha)', value: detail[0]?.luasPanenHabis ?? '-' },
+    { label: 'Luas panen belum habis (Ha)', value: detail[0]?.luasPanenBelumHabis ?? '-' },
+    { label: 'Luas rusak/tidak berhasil/puso (Ha)', value: detail[0]?.luasRusak ?? '-' },
+    { label: 'Luas penanaman baru/tambah tanam (Ha)', value: detail[0]?.luasPenanamanBaru ?? '-' },
     {
       label: 'Luas tanaman akhir bulan laporan (Ha)',
-      value: detail[0]?.luasTanamanAkhirBulanLaporan
+      value: detail[0]?.luasTanamanAkhirBulanLaporan ?? '-'
     },
-    { label: 'Produksi dipanen habis/dibongkar (Kwintal)', value: detail[0]?.prodPanenHabis },
-    { label: 'Produksi belum habis (Kwintal)', value: detail[0]?.prodBelumHabis },
-    { label: 'Rata-rata harga jual petani per kilogram (Rupiah)', value: detail[0]?.rataHargaJual }
+    {
+      label: 'Produksi dipanen habis/dibongkar (Kuintal)',
+      value: detail[0]?.prodPanenHabis ?? '-'
+    },
+    { label: 'Produksi belum habis (Kuintal)', value: detail[0]?.prodBelumHabis ?? '-' },
+    {
+      label: 'Rata-rata harga jual petani per kilogram (Rupiah)',
+      value: detail[0]?.rataHargaJual ?? '-'
+    }
   ];
 
   if (!detail) return <Fragment />;

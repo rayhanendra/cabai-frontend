@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import BaseButton from 'components/Base/BaseButton';
-import BaseTabs from 'components/Base/BaseTabs';
+// import BaseTabs from 'components/Base/BaseTabs';
 import TheBottomNavigation from 'components/Base/TheBottomNavigation';
 import TheProfileHeader from 'components/Base/TheProfileHeader';
 import CardUsang from 'components/Page/Pedagang/CardUsang';
@@ -26,11 +26,11 @@ function UsangPedagang() {
         <BaseButton shape="withicon" link="catat-usang" size="large" variant="outlined" fullWidth>
           <Typography variant="h5">Catat Cabai Usang</Typography>
         </BaseButton>
-        <BaseTabs
+        {/* <BaseTabs
           variant="contained"
-          labels={['Cabai Merah Besar', 'Cabai Merah Keriting', 'Cabai Rawit Merah']}>
-          {/* CMB */}
-          <Box display="flex" flexDirection="column" gap={1}>
+          labels={['Cabai Merah Besar', 'Cabai Merah Keriting', 'Cabai Rawit Merah']}> */}
+        {/* CMB */}
+        {/* <Box display="flex" flexDirection="column" gap={1}>
             <Typography>Total Cabai Merah Besar yang usang</Typography>
             <Box display="flex" alignItems="center" justifyContent="space-between">
               <Typography variant="h6">Harga Jual Per kg:</Typography>
@@ -43,9 +43,9 @@ function UsangPedagang() {
             <Box p={2} mt={1} borderRadius={1} bgcolor="white">
               <Typography>Hasil Penjualan Cabai Merah Besar (kg)</Typography>
             </Box>
-          </Box>
-          {/* CMK */}
-          <Box display="flex" flexDirection="column" gap={1}>
+          </Box> */}
+        {/* CMK */}
+        {/* <Box display="flex" flexDirection="column" gap={1}>
             <Typography>Total Cabai Merah Keriting yang usang</Typography>
             <Box display="flex" alignItems="center" justifyContent="space-between">
               <Typography variant="h6">Harga Jual Per kg:</Typography>
@@ -58,9 +58,9 @@ function UsangPedagang() {
             <Box p={2} mt={1} borderRadius={1} bgcolor="white">
               <Typography>Hasil Penjualan Cabai Merah Keriting (kg)</Typography>
             </Box>
-          </Box>
-          {/* CRM */}
-          <Box display="flex" flexDirection="column" gap={1}>
+          </Box> */}
+        {/* CRM */}
+        {/* <Box display="flex" flexDirection="column" gap={1}>
             <Typography>Total Cabai Rawit Merah yang usang</Typography>
             <Box display="flex" alignItems="center" justifyContent="space-between">
               <Typography variant="h6">Harga Jual Per kg:</Typography>
@@ -73,13 +73,13 @@ function UsangPedagang() {
             <Box p={2} mt={1} borderRadius={1} bgcolor="white">
               <Typography>Hasil Penjualan Cabai Rawit Merah (kg)</Typography>
             </Box>
-          </Box>
-        </BaseTabs>
+          </Box> */}
+        {/* </BaseTabs> */}
         <Box display="flex" flexDirection="column" gap={2}>
           <Box display="flex" flexDirection="column" gap={1}>
             <Typography variant="h5">Riwayat Cabai Usang</Typography>
             <Box display="flex" alignItems="center" justifyContent="space-between">
-              <Typography>Kumpulan data cabai anda yang sudah usang</Typography>
+              <Typography>Kumpulan cabai yang sudah usang</Typography>
               <Typography variant="h6" onClick={() => navigate('/pedagang/riwayat')}>
                 Lihat Semua
               </Typography>

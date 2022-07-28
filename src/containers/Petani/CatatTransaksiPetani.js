@@ -135,7 +135,6 @@ function CatatTransaksiPetani() {
       <BaseHeader label="Catat Transaksi Cabai" to={-1} />
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formikProps) => {
-          console.log('formikprops', formikProps);
           setTipePedagang(formikProps.values.tipePedagang);
           setLahanId(formikProps.values.lahan);
           return (

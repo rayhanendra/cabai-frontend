@@ -21,8 +21,6 @@ function RiwayatPetani() {
   const { riwayat: riwayatLahan } = useSelector((state) => state.lahan);
   const { riwayat: riwayatTransaksi } = useSelector((state) => state.transaksi);
 
-  console.log(riwayatTransaksi);
-
   useEffect(() => {
     dispatch(getAllTransaksi());
     dispatch(getAllBlanko());

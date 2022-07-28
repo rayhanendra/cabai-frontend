@@ -80,7 +80,7 @@ function RouterConfig() {
         <Route path="transaksi" element={<TransaksiPedagang />} />
         <Route path="transaksi/catat-transaksi" element={<CatatTransaksiPedagang />} />
         <Route path="transaksi/ulang-transaksi/:id" element={<UlangTransaksiPedagang />} />
-        <Route path="transaksi/detail-transaksi/:id" element={<DetailTransaksiPedagang />} />
+        <Route path="transaksi/detail-transaksi/:type/:id" element={<DetailTransaksiPedagang />} />
         <Route path="usang" element={<UsangPedagang />} />
         <Route path="usang/catat-usang" element={<CatatUsangPedagang />} />
         <Route path="usang/detail-usang/:id" element={<DetailUsangPedagang />} />

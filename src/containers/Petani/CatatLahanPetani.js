@@ -77,7 +77,6 @@ function CatatLahan() {
       <BaseHeader label="Penanaman Baru Cabai" to={-1} />
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formikProps) => {
-          console.log(formikProps);
           return (
             <Form>
               <Stack gap={2} p={2}>
@@ -152,7 +151,7 @@ function CatatLahan() {
                   <BaseButton
                     fullWidth
                     type="submit"
-                    disabled={!(formikProps.isValid && formikProps.dirty)}>
+                    disabled={!(formikProps.isValid && formikProps.dirty) || loading}>
                     {loading ? 'Memuat..' : 'Kirim'}
                   </BaseButton>
                 </Box>

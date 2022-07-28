@@ -139,7 +139,6 @@ function DetailLahanPetani() {
           validationSchema={validationSchema}
           onSubmit={onSubmit}>
           {(formikProps) => {
-            console.log(formikProps);
             return (
               <Form>
                 <Stack direction="row" gap={1}>
@@ -223,7 +222,7 @@ function DetailLahanPetani() {
         </Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography variant="body2">Keuntungan Bersih</Typography>
-          <Typography variant="h5" color="primary.main">
+          <Typography variant="h5" color={detail.keuntungan >= 0 ? 'primary.main' : 'error.main'}>
             {formatRupiah(detail.keuntungan) ?? 0}
           </Typography>
         </Stack>

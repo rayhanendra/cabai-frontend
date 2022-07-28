@@ -19,6 +19,12 @@ export const addUsang = createAsyncThunk('usang/addUsang', async (data, thunkAPI
   return response.data;
 });
 
+export const deleteUsang = createAsyncThunk('usang/deleteUsang', async (id, thunkAPI) => {
+  const response = await UsangService.deleteUsang(id);
+  thunkAPI.dispatch(setMessage(response));
+  return response.data;
+});
+
 const initialState = { usang: [], status: null, detail: {} };
 const usangSlice = createSlice({
   name: 'stok',
@@ -53,6 +59,15 @@ const usangSlice = createSlice({
       state.detail = action.payload.data;
     });
     builder.addCase(addUsang.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(deleteUsang.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(deleteUsang.fulfilled, (state) => {
+      state.status = 'success';
+    });
+    builder.addCase(deleteUsang.rejected, (state) => {
       state.status = 'failed';
     });
   }

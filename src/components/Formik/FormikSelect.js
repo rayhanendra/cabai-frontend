@@ -14,7 +14,6 @@ const FormikSelect = (props) => {
       defaultValue={defaultValue}
       onChange={(event, values) => {
         formikProps.setFieldValue(name, values.props.value);
-        console.log('in values', values);
       }}
       disabled={disabled}
       {...rest}

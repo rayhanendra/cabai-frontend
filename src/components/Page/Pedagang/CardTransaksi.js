@@ -30,7 +30,7 @@ const CardTransaksi = (props) => {
     <>
       <BaseCard
         title={`Status: ${StatusEnum[item.statusTransaksi]} - ${momentFormat(item.createdAt)}`}
-        link={`detail-transaksi/${item._id}`}
+        link={`detail-transaksi/${type}/${item._id}`}
         status={item.statusTransaksi}>
         <Stack gap={1}>
           {type === 'diajukan' && (

@@ -19,14 +19,14 @@ const CardUsang = (props) => {
           <Typography>Jumlah Cabai Usang</Typography>
           <Typography variant="h6">{formatNumber(item.jumlahUsang)}</Typography>
         </Stack>
-        <Stack direction="row" justifyContent="space-between">
+        {/* <Stack direction="row" justifyContent="space-between">
           <Typography>Total Cabai Sebelumnya</Typography>
           <Typography variant="h6">{item.totalSebelum}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography>Total Cabai Setelahnya</Typography>
           <Typography variant="h6">{item.totalSetelah}</Typography>
-        </Stack>
+        </Stack> */}
         <Stack direction="row" justifyContent="space-between">
           <Typography>Harga per kg</Typography>
           <Typography variant="h6">{formatRupiah(item.hargaJual)}</Typography>

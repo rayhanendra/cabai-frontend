@@ -15,7 +15,7 @@ const getUsangByType = async (type) => {
 };
 
 const deleteUsang = async (id) => {
-  return axios.delete(API_URL + 'usang/lihatusang/' + id, { headers: authHeader() });
+  return axios.delete(API_URL + 'usang/hapususang/' + id, { headers: authHeader() });
 };
 
 const addUsang = async (data) => {

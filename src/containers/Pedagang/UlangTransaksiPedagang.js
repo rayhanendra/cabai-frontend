@@ -25,10 +25,10 @@ function UlangTransaksiPedagang() {
   }, [dispatch]);
 
   const initialValues = {
-    tipeCabai: detail[0]?.tipeCabai ?? '',
-    tanggalPencatatan: detail[0]?.tanggalPencatatan ?? '',
-    jumlahDijual: detail[0]?.jumlahDijual ?? '',
-    hargaJual: detail[0]?.hargaJual ?? ''
+    tipeCabai: detail?.tipeCabai ?? '',
+    tanggalPencatatan: detail?.tanggalPencatatan ?? '',
+    jumlahDijual: detail?.jumlahDijual ?? '',
+    hargaJual: detail?.hargaJual ?? ''
   };
 
   const validationSchema = yup.object({
@@ -96,12 +96,12 @@ function UlangTransaksiPedagang() {
                 <Typography variant="h5">Dijual Kepada</Typography>
                 <Stack gap={1}>
                   <Typography variant="h5">Nama Penjual</Typography>
-                  <Typography variant="body2">{detail[0]?.pembeli.name}</Typography>
+                  <Typography variant="body2">{detail?.pembeli?.name}</Typography>
                   <Divider />
                 </Stack>
                 <Stack gap={1}>
                   <Typography variant="h5">Peran</Typography>
-                  <Typography variant="body2">{detail[0]?.pembeli.role}</Typography>
+                  <Typography variant="body2">{detail?.pembeli?.role}</Typography>
                   <Divider />
                 </Stack>
                 <Box mt={5}>

@@ -9,13 +9,13 @@ function BerandaPedagang() {
     <>
       <TheProfileHeader />
       <Box display="flex" flexDirection="column" gap={3} p={2} mb="56px">
-        <Box>
+        {/* <Box>
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus, felis netus neque,
             sapien lobortis quisque. Mi id amet sed elit, ultrices. Dapibus vestibulum viverra est
             habitasse ultrices pretium nisi, dis. Magna.
           </Typography>
-        </Box>
+        </Box> */}
         <Box
           display={'flex'}
           flexDirection={'column'}

@@ -2,6 +2,8 @@ import { Stack, Typography } from '@mui/material';
 import BaseCard from 'components/Base/BaseCard';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CabaiEnum } from 'utils/constants';
+import { momentFormat } from 'utils/MomentFormat';
 
 const CardRiwayatUsang = (props) => {
   const { item } = props;
@@ -14,23 +16,23 @@ const CardRiwayatUsang = (props) => {
   return (
     <BaseCard onClick={handleDetail}>
       <Stack gap={1}>
-        <Typography variant="h6">{item.tanggalPencatatan}</Typography>
+        <Typography variant="h6">{momentFormat(item.tanggalPencatatan)}</Typography>
         <Stack direction="row" justifyContent="space-between">
           <Typography>Tipe Cabai</Typography>
-          <Typography variant="h6">{item.tipeCabai}</Typography>
+          <Typography variant="h6">{CabaiEnum[item.tipeCabai]}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography>Jumlah Cabai Usang</Typography>
           <Typography variant="h6">{item.jumlahUsang}</Typography>
         </Stack>
-        <Stack direction="row" justifyContent="space-between">
+        {/* <Stack direction="row" justifyContent="space-between">
           <Typography>Total Cabai Sebelumnya</Typography>
           <Typography variant="h6">{item.totalSebelum}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography>Total Cabai Setelahnya</Typography>
           <Typography variant="h6">{item.totalSetelah}</Typography>
-        </Stack>
+        </Stack> */}
         <Stack direction="row" justifyContent="space-between">
           <Typography>Harga Jual Per kg</Typography>
           <Typography variant="h6">{item.hargaJual}</Typography>

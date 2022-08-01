@@ -17,7 +17,7 @@ const CardUsang = (props) => {
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography>Jumlah Cabai Usang</Typography>
-          <Typography variant="h6">{formatNumber(item.jumlahUsang)}</Typography>
+          <Typography variant="h6">{formatNumber(item.jumlahUsang)} kuintal</Typography>
         </Stack>
         {/* <Stack direction="row" justifyContent="space-between">
           <Typography>Total Cabai Sebelumnya</Typography>

@@ -36,7 +36,7 @@ function DetailLahanPetani() {
       value: `${detail.jumlahBatang} Batang`
     },
     {
-      label: 'Luas Lahan (Ha)',
+      label: 'Luas Lahan (ha)',
       value: detail.luasLahan
     },
     {
@@ -122,7 +122,9 @@ function DetailLahanPetani() {
         </Stack>
         <Stack direction="column" alignItems="center" justifyContent="center">
           <Typography variant="body2">Tanggal Selesai</Typography>
-          <Typography variant="h5">{momentFormat(detail.tanggalSelesai) ?? '-'}</Typography>
+          <Typography variant="h5">
+            {detail.tanggalSelesai ? momentFormat(detail.tanggalSelesai) : 'Belum Selesai'}
+          </Typography>
         </Stack>
       </Stack>
       <Divider />
@@ -133,7 +135,7 @@ function DetailLahanPetani() {
             <Typography variant="h6">{value}</Typography>
           </Stack>
         ))}
-        <Typography variant="body1">Luas Rusak (Ha)</Typography>
+        <Typography variant="body1">Luas Rusak (ha)</Typography>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -239,7 +241,7 @@ function DetailLahanPetani() {
         </Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography variant="body2">Total Jumlah Panen</Typography>
-          <Typography variant="h5">{detail.jumlahPanen} Transaksi</Typography>
+          <Typography variant="h5">{detail.jumlahPanen} kuintal</Typography>
         </Stack>
       </Stack>
       <Stack p={2} gap={2}>

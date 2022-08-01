@@ -4,9 +4,10 @@ import {
   ExitToAppRounded,
   PeopleOutlined
 } from '@mui/icons-material';
-import { Button, CircularProgress } from '@mui/material';
+import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import BaseLoading from './BaseLoading';
 
 const CustomButton = styled(Button)({
   borderRadius: '8px',
@@ -35,21 +36,7 @@ const CustomButton = styled(Button)({
 const ButtonChild = (props) => {
   const { loading = false, children } = props;
 
-  return (
-    <>
-      {loading ? (
-        <CircularProgress
-          variant="indeterminate"
-          color="inherit"
-          disableShrink
-          size={25}
-          thickness={4}
-        />
-      ) : (
-        children
-      )}
-    </>
-  );
+  return <>{loading ? <BaseLoading /> : children}</>;
 };
 
 const BaseButton = (props) => {

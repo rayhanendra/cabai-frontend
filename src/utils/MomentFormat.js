@@ -43,3 +43,6 @@ export function momentAdd(date, options) {
 export function dateDifference(dateTo, dateFrom, measurement = 'seconds') {
   return moment(dateTo).diff(moment(dateFrom), measurement);
 }
+export function getYearMonthFormat(date) {
+  return moment(date).format('YYYY-MM');
+}

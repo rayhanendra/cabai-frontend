@@ -3,11 +3,6 @@ import { PURGE } from 'redux-persist';
 import StokService from 'services/stok.service';
 import { setMessage } from './message';
 
-export const getDashboardStok = createAsyncThunk('stok/getDashboardStok', async () => {
-  const response = await StokService.getDashboardStok();
-  return response.data;
-});
-
 export const addStok = createAsyncThunk('stok/addStok', async (data, thunkAPI) => {
   const response = await StokService.addStok(data);
   thunkAPI.dispatch(setMessage(response));
@@ -29,22 +24,17 @@ export const getSyncStok = createAsyncThunk('stok/getSyncStok', async () => {
   return response.data.data;
 });
 
-const initialState = { dashboard: {}, status: '', stoks: [], detail: {} };
+export const getStokByMonth = createAsyncThunk('stok/getStokByMonth', async (time) => {
+  const response = await StokService.getStokByMonth(time);
+  return response.data.data;
+});
+
+const initialState = { dashboard: {}, transaksi: {}, status: '', stoks: [], detail: {} };
 const stokSlice = createSlice({
   name: 'stok',
   initialState: initialState,
   extraReducers: (builder) => {
     builder.addCase(PURGE, () => initialState);
-    builder.addCase(getDashboardStok.pending, (state) => {
-      state.status = 'loading';
-    });
-    builder.addCase(getDashboardStok.fulfilled, (state, action) => {
-      state.status = 'success';
-      state.dashboard = action.payload;
-    });
-    builder.addCase(getDashboardStok.rejected, (state) => {
-      state.status = 'failed';
-    });
     builder.addCase(addStok.pending, (state) => {
       state.status = 'loading';
     });
@@ -82,6 +72,16 @@ const stokSlice = createSlice({
       state.dashboard = action.payload;
     });
     builder.addCase(getSyncStok.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(getStokByMonth.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(getStokByMonth.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.transaksi = action.payload;
+    });
+    builder.addCase(getStokByMonth.rejected, (state) => {
       state.status = 'failed';
     });
   }

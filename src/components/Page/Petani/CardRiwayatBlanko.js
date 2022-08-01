@@ -27,35 +27,35 @@ const CardRiwayatBlanko = (props) => {
           <Typography variant="h6">{item.rataHargaJual ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Luas tanaman akhir bulan lalu (Ha)</Typography>
+          <Typography>Luas tanaman akhir bulan lalu (ha)</Typography>
           <Typography variant="h6">{item.luasTanamanAkhirBulanLalu ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Luas panen habis / dibongkar (Ha)</Typography>
+          <Typography>Luas panen habis / dibongkar (ha)</Typography>
           <Typography variant="h6">{item.luasPanenHabis ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Luas panen belum habis (Ha)</Typography>
+          <Typography>Luas panen belum habis (ha)</Typography>
           <Typography variant="h6">{item.luasPanenBelumHabis ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Luas rusak/tidak berhasil/puso (Ha)</Typography>
+          <Typography>Luas rusak/tidak berhasil/puso (ha)</Typography>
           <Typography variant="h6">{item.luasRusak ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Luas penanaman baru/tambah tanam (Ha)</Typography>
+          <Typography>Luas penanaman baru/tambah tanam (ha)</Typography>
           <Typography variant="h6">{item.luasPenanamanBaru ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Luas tanaman akhir bulan laporan (Ha)</Typography>
+          <Typography>Luas tanaman akhir bulan laporan (ha)</Typography>
           <Typography variant="h6">{item.luasTanamanAkhirBulanLaporan ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Produksi dipanen habis/dibongkar (Kuintal)</Typography>
+          <Typography>Produksi dipanen habis/dibongkar (kuintal)</Typography>
           <Typography variant="h6">{item.prodPanenHabis ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Produksi belum habis (Kuintal)</Typography>
+          <Typography>Produksi belum habis (kuintal)</Typography>
           <Typography variant="h6">{item.prodBelumHabis ?? '-'}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">

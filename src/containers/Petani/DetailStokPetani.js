@@ -23,7 +23,7 @@ function DetailStokPetani() {
     { label: 'Total Hasil Panen', value: formatNumber(detail[0]?.totalHasilPanen) },
     { label: 'Hasil Panen Sukses', value: formatNumber(detail[0]?.hasilPanenSukses) },
     { label: 'Hasil Panen Gagal', value: formatNumber(detail[0]?.hasilPanenGagal) },
-    { label: 'Harga Jual Per Kg (Rp/kg)', value: formatRupiah(detail[0]?.hargaJual) }
+    { label: 'Harga Jual Per kg (Rp/kg)', value: formatRupiah(detail[0]?.hargaJual) }
   ];
 
   if (!detail) return <Fragment />;

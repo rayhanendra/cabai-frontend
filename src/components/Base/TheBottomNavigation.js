@@ -1,7 +1,7 @@
 import { BottomNavigation, BottomNavigationAction, Paper, Typography } from '@mui/material';
 import React from 'react';
 import RestoreIcon from '@mui/icons-material/Restore';
-import { HomeRounded, WarehouseRounded } from '@mui/icons-material';
+import { HomeRounded } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import IconPenjualan from 'public/images/icons/IconPenjualan';
 import theme from 'themes/theme';
@@ -32,14 +32,12 @@ const TheBottomNavigation = (props) => {
         switch (route) {
           case '/pedagang/beranda':
             return 0;
-          case '/pedagang/stok':
-            return 1;
           case '/pedagang/transaksi':
-            return 2;
+            return 1;
           case '/pedagang/usang':
-            return 3;
+            return 2;
           case '/pedagang/riwayat':
-            return 4;
+            return 3;
           default:
             return 0;
         }
@@ -66,11 +64,6 @@ const TheBottomNavigation = (props) => {
       label: 'Beranda',
       icon: <HomeRounded />,
       link: () => navigate('/pedagang/beranda')
-    },
-    {
-      label: 'Stok',
-      icon: <WarehouseRounded />,
-      link: () => navigate('/pedagang/stok')
     },
     {
       label: 'Transaksi',

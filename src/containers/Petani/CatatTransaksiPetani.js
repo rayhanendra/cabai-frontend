@@ -32,8 +32,8 @@ function CatatTransaksiPetani() {
   const [namaLahan, setNamaLahan] = useState([]);
   const [lahanId, setLahanId] = useState('');
   const [tanggalTanam, setTanggalTanam] = useState('');
-  const [tipePedagang, setTipePedagang] = useState('');
-  const [namaPedagang, setNamaPedagang] = useState([]);
+  const [tipePembeli, setTipePembeli] = useState('');
+  const [namaPembeli, setNamaPembeli] = useState([]);
   const [haveAccount, setHaveAccount] = useState('yes');
 
   useEffect(() => {
@@ -55,18 +55,18 @@ function CatatTransaksiPetani() {
   }, [lahanId]);
 
   useEffect(() => {
-    if (haveAccount === 'yes' && tipePedagang) {
+    if (haveAccount === 'yes' && tipePembeli) {
       setLoading(true);
       userService
-        .getPedagangByRole(tipePedagang)
+        .getPedagangByRole(tipePembeli)
         .then((response) => {
           const data = response.data.pedagang.map(({ _id, name }) => ({ id: _id, label: name }));
-          setNamaPedagang(data);
+          setNamaPembeli(data);
           setLoading(false);
         })
         .catch((error) => error);
     }
-  }, [tipePedagang]);
+  }, [tipePembeli]);
 
   const initialValues = {
     lahan: '',
@@ -75,8 +75,8 @@ function CatatTransaksiPetani() {
     hargaJual: '',
     grade: '',
     pembeli: '',
-    namaPedagang: '',
-    tipePedagang: ''
+    namaPembeli: '',
+    tipePembeli: ''
   };
   const validationSchema = yup.object({
     lahan: yup.string('Masukkan lahan').required('Lahan diperlukan'),
@@ -86,7 +86,7 @@ function CatatTransaksiPetani() {
     jumlahDijual: yup.number('Masukkan jumlah dijual').required('Jumlah dijual diperlukan'),
     hargaJual: yup.number('Masukkan harga per kg').required('Harga per kg diperlukan'),
     grade: yup.string('Masukkan grade cabai').required('Grade cabai diperlukan')
-    // tipePedagang: yup.string('Tipe pedagang dijual').required('Tipe pedagang diperlukan'),
+    // tipePembeli: yup.string('Tipe pedagang dijual').required('Tipe pedagang diperlukan'),
     // pembeli: yup.string('Masukkan nama pedagang').required('Nama pedagang diperlukan')
   });
   const onSubmit = (formValue) => {
@@ -97,8 +97,8 @@ function CatatTransaksiPetani() {
       hargaJual,
       grade,
       pembeli,
-      namaPedagang,
-      tipePedagang
+      namaPembeli,
+      tipePembeli
     } = formValue;
 
     const accountForm = { lahan, tanggalPencatatan, jumlahDijual, hargaJual, grade, pembeli };
@@ -108,8 +108,8 @@ function CatatTransaksiPetani() {
       jumlahDijual,
       hargaJual,
       grade,
-      namaPedagang,
-      tipePedagang
+      namaPembeli,
+      tipePembeli
     };
 
     let formData = {};
@@ -135,7 +135,7 @@ function CatatTransaksiPetani() {
       <BaseHeader label="Catat Transaksi Cabai" to={-1} />
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formikProps) => {
-          setTipePedagang(formikProps.values.tipePedagang);
+          setTipePembeli(formikProps.values.tipePembeli);
           setLahanId(formikProps.values.lahan);
           return (
             <Form>
@@ -157,7 +157,7 @@ function CatatTransaksiPetani() {
                 />
                 <FormikController
                   control="numberweight"
-                  label="Hasil Panen (Kg)"
+                  label="Hasil Panen (kg)"
                   name="jumlahDijual"
                   formikProps={formikProps}
                 />
@@ -176,7 +176,7 @@ function CatatTransaksiPetani() {
                 />
                 <FormControl>
                   <Typography variant="h5" sx={{ mb: 1 }}>
-                    Dijual Kepada
+                    Pembeli
                   </Typography>
                   <RadioGroup
                     aria-labelledby="demo-controlled-radio-buttons-group"
@@ -214,7 +214,7 @@ function CatatTransaksiPetani() {
                         <FormikController
                           control="select"
                           label="Tipe Pedagang"
-                          name="tipePedagang"
+                          name="tipePembeli"
                           options={optionsPedagang}
                           defaultValue={'distributor'}
                           disabled={haveAccount == 'no'}
@@ -224,7 +224,7 @@ function CatatTransaksiPetani() {
                           control="autocomplete"
                           label="Nama Pedagang"
                           name="pembeli"
-                          options={namaPedagang}
+                          options={namaPembeli}
                           disabled={loading || haveAccount == 'no'}
                           formikProps={formikProps}
                         />
@@ -260,7 +260,7 @@ function CatatTransaksiPetani() {
                         <FormikController
                           control="select"
                           label="Tipe Pedagang"
-                          name="tipePedagang"
+                          name="tipePembeli"
                           options={optionsPedagang}
                           defaultValue={'distributor'}
                           disabled={haveAccount == 'yes'}
@@ -269,7 +269,7 @@ function CatatTransaksiPetani() {
                         <FormikController
                           control="textfield"
                           label="Nama Pedagang"
-                          name="namaPedagang"
+                          name="namaPembeli"
                           disabled={haveAccount == 'yes'}
                           formikProps={formikProps}
                         />

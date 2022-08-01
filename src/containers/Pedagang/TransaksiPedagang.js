@@ -31,55 +31,6 @@ function TransaksiPedagang() {
           fullWidth>
           <Typography variant="h5">Catat Transaksi</Typography>
         </BaseButton>
-        {/* <BaseTabs
-          variant="contained"
-          labels={['Cabai Merah Besar', 'Cabai Merah Keriting', 'Cabai Rawit Merah']}> */}
-        {/* CMB */}
-        {/* <Box display="flex" flexDirection="column" gap={1}>
-            <Typography>Total transaksi Cabai Merah Besar</Typography>
-            <Box display="flex" alignItems="center" justifyContent="space-between">
-              <Typography variant="h6">Harga Jual Per kg:</Typography>
-              <Typography variant="h6">Rp 40.150</Typography>
-            </Box>
-            <Box display="flex" alignItems="center" justifyContent="space-between">
-              <Typography variant="h6">Total Terjual:</Typography>
-              <Typography variant="h6">1200 kg</Typography>
-            </Box>
-            <Box p={2} mt={1} borderRadius={1} bgcolor="white">
-              <Typography>Hasil Transaksi Cabai Merah Besar (kg)</Typography>
-            </Box>
-          </Box> */}
-        {/* CMK */}
-        {/* <Box display="flex" flexDirection="column" gap={1}>
-            <Typography>Total transaksi Cabai Merah Besar</Typography>
-            <Box display="flex" alignItems="center" justifyContent="space-between">
-              <Typography variant="h6">Harga Jual Per kg:</Typography>
-              <Typography variant="h6">Rp 40.150</Typography>
-            </Box>
-            <Box display="flex" alignItems="center" justifyContent="space-between">
-              <Typography variant="h6">Total Terjual:</Typography>
-              <Typography variant="h6">1200 kg</Typography>
-            </Box>
-            <Box p={2} mt={1} borderRadius={1} bgcolor="white">
-              <Typography>Hasil Transaksi Cabai Merah Keriting (kg)</Typography>
-            </Box>
-          </Box> */}
-        {/* CRM */}
-        {/* <Box display="flex" flexDirection="column" gap={1}>
-            <Typography>Total transaksi Cabai Merah Besar</Typography>
-            <Box display="flex" alignItems="center" justifyContent="space-between">
-              <Typography variant="h6">Harga Jual Per kg:</Typography>
-              <Typography variant="h6">Rp 40.150</Typography>
-            </Box>
-            <Box display="flex" alignItems="center" justifyContent="space-between">
-              <Typography variant="h6">Total Terjual:</Typography>
-              <Typography variant="h6">1200 kg</Typography>
-            </Box>
-            <Box p={2} mt={1} borderRadius={1} bgcolor="white">
-              <Typography>Hasil Transaksi Cabai Rawit Merah (kg)</Typography>
-            </Box>
-          </Box> */}
-        {/* </BaseTabs> */}
         <BaseTabs labels={['Transaksi Diajukan', 'Konfirmasi Transaksi']}>
           <Stack gap={2}>
             <Stack gap={1}>
@@ -119,7 +70,7 @@ function TransaksiPedagang() {
             </Stack>
           </Stack>
           {riwayat?.map((item, index) => (
-            <CardTransaksi key={index} item={item} type="diajukan" />
+            <CardTransaksi key={index} item={item} type="diterima" />
           ))}
         </Stack>
       </Box>

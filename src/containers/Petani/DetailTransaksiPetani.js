@@ -15,7 +15,7 @@ import { Fragment } from 'react';
 function DetailTransaksiPetani() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { type, id } = useParams();
+  const { id } = useParams();
 
   const { detail } = useSelector((state) => state.transaksi);
 
@@ -23,37 +23,29 @@ function DetailTransaksiPetani() {
     dispatch(getTransaksiById(id));
   }, [dispatch]);
 
-  const data = {
-    diajukan: [
-      {
-        label: 'Nama Pembeli',
-        value: detail.pembeli ? detail?.pembeli?.name : detail.namaPedagang
-      },
-      {
-        label: 'Peran',
-        value: detail.pembeli ? RoleEnum[detail?.pembeli?.role] : RoleEnum[detail.tipePedagang]
-      }
-    ],
-    konfirmasi: [
-      { label: 'Nama Penjual', value: detail?.penjual?.name },
-      {
-        label: 'Peran',
-        value: detail.penjual ? RoleEnum[detail?.penjual?.role] : RoleEnum[detail.tipePedagang]
-      }
-    ],
-    other: [
-      {
-        label: 'Grade',
-        value: GradeEnum[detail?.grade]
-      },
-      { label: 'Jumlah yang terjual (kuintal)', value: formatNumber(detail?.jumlahDijual) },
-      { label: 'Harga jual per kg (Rp/kg)', value: formatRupiah(detail?.hargaJual) },
-      {
-        label: 'Total Produksi (Rp)',
-        value: formatRupiah(detail?.totalProduksi)
-      }
-    ]
-  };
+  const data = [
+    {
+      label: 'Nama Pembeli',
+      value: detail.pembeli ? detail?.pembeli?.name : detail.namaPembeli
+    },
+    {
+      label: 'Peran',
+      value: detail.pembeli ? RoleEnum[detail?.pembeli?.role] : RoleEnum[detail.tipePembeli]
+    },
+    {
+      label: 'Grade',
+      value: GradeEnum[detail?.grade]
+    },
+    {
+      label: 'Jumlah yang terjual (kuintal)',
+      value: `${formatNumber(detail?.jumlahDijual)} kuintal`
+    },
+    { label: 'Harga Jual Per kg (Rp/kg)', value: formatRupiah(detail?.hargaJual) },
+    {
+      label: 'Total Produksi (Rp)',
+      value: formatRupiah(detail?.totalProduksi)
+    }
+  ];
 
   if (!detail) return <Fragment />;
 
@@ -77,10 +69,7 @@ function DetailTransaksiPetani() {
           }>
           Status: {StatusEnum[detail?.statusTransaksi]}
         </Typography>
-        {/* {detail.statusTransaksi === 0 && <BaseListDetail data={data.diajukan} />} */}
-        <BaseListDetail data={data.diajukan} />
-        {type === 'konfirmasi' && <BaseListDetail data={data.diajukan} />}
-        <BaseListDetail data={data.other} />
+        <BaseListDetail data={data} />
         {detail?.statusTransaksi === 1 && (
           <BaseButton
             shape="outlined"

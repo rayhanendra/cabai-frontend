@@ -3,7 +3,7 @@ import { Stack, Typography } from '@mui/material';
 import BaseCard from 'components/Base/BaseCard';
 import { CabaiEnum } from 'utils/constants';
 import { momentFormat } from 'utils/MomentFormat';
-import { formatNumber } from 'utils/Formats';
+import { formatNumber, formatRupiah } from 'utils/Formats';
 
 const CardLahanPetani = (props) => {
   const { item } = props;
@@ -15,15 +15,15 @@ const CardLahanPetani = (props) => {
     },
     {
       label: 'Jumlah Batang yang Ditanam',
-      value: formatNumber(item.jumlahBatang)
+      value: item.jumlahBatang
     },
     {
       label: 'Total Hasil Panen (kuintal)',
-      value: formatNumber(item.jumlahPanen) ?? '-'
+      value: `${formatNumber(item.jumlahPanen)} kuintal` ?? '-'
     },
     {
-      label: 'Total Penjualan',
-      value: formatNumber(item.jumlahPenjualan) ?? '-'
+      label: 'Total Hasil Penjualan',
+      value: formatRupiah(item.jumlahPenjualan) ?? '-'
     }
   ];
 

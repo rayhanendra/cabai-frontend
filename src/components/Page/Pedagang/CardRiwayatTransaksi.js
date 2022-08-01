@@ -23,9 +23,10 @@ const CardRiwayatTransaksi = (props) => {
         <Typography variant="h6">{StatusEnum[item.statusTransaksi]}</Typography>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-between">
-        <Typography>Dijual Kepada</Typography>
+        <Typography>Pembeli</Typography>
         <Typography variant="h6">
-          {item.pembeli?.name} ({RoleEnum[item.pembeli?.role]})
+          {item.pembeli?.name ?? item.namaPembeli} (
+          {RoleEnum[item.pembeli?.role] ?? item.tipePembeli})
         </Typography>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-between">
@@ -34,7 +35,7 @@ const CardRiwayatTransaksi = (props) => {
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Typography>Jumlah Dijual</Typography>
-        <Typography variant="h6">{formatNumber(item.jumlahDijual)}</Typography>
+        <Typography variant="h6">{formatNumber(item.jumlahDijual)} kuintal</Typography>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Typography>Harga Per kg</Typography>

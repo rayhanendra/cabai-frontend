@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import CardStok from 'components/Page/Petani/CardStok';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDashboardStok } from 'redux/slices/stok';
+// import { getDashboardStok } from 'redux/slices/stok';
 
 function StokPetani() {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ function StokPetani() {
   } = useSelector((state) => state.stok);
 
   useEffect(() => {
-    dispatch(getDashboardStok());
+    // dispatch(getDashboardStok());
   }, [dispatch]);
 
   return (

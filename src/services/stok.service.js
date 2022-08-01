@@ -2,9 +2,9 @@ import axios from 'axios';
 import authHeader from './auth-header';
 const API_URL = process.env.REACT_APP_API_URL;
 
-const getDashboardStok = async () => {
-  return axios.get(API_URL + 'stok', { headers: authHeader() });
-};
+// const getDashboardStok = async () => {
+//   return axios.get(API_URL + 'stok', { headers: authHeader() });
+// };
 const addStok = (data) => {
   return axios.post(API_URL + 'stok/tambahstok', data, { headers: authHeader() });
 };
@@ -30,13 +30,19 @@ const getSyncStok = () => {
     }
   );
 };
+const getStokByMonth = (time) => {
+  return axios.get(API_URL + 'stok/' + time, {
+    headers: authHeader()
+  });
+};
 
 const stokService = {
-  getDashboardStok,
+  // getDashboardStok,
   addStok,
   getAllStok,
   getStokById,
   getStokByType,
-  getSyncStok
+  getSyncStok,
+  getStokByMonth
 };
 export default stokService;

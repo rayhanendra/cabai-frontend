@@ -2,7 +2,7 @@ import { Stack, Typography } from '@mui/material';
 import BaseCard from 'components/Base/BaseCard';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { formatNumber } from 'utils/Formats';
+import { formatNumber, formatRupiah } from 'utils/Formats';
 import { momentFormat } from 'utils/MomentFormat';
 
 function CardRiwayatLahan(props) {
@@ -17,15 +17,15 @@ function CardRiwayatLahan(props) {
     },
     {
       label: 'Jumlah Batang yang Ditanam',
-      value: formatNumber(item.jumlahBatang)
+      value: item.jumlahBatang
     },
     {
       label: 'Total Hasil Panen (kuintal)',
-      value: formatNumber(item.jumlahPanen) ?? '-'
+      value: `${formatNumber(item.jumlahPanen)} kuintal` ?? '-'
     },
     {
       label: 'Total Penjualan',
-      value: formatNumber(item.jumlahPenjualan) ?? '-'
+      value: formatRupiah(item.jumlahPenjualan) ?? '-'
     }
   ];
 

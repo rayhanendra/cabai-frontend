@@ -93,7 +93,7 @@ function UlangTransaksiPetani() {
                   name="hargaJual"
                   formikProps={formikProps}
                 />
-                <Typography variant="h5">Dijual Kepada</Typography>
+                <Typography variant="h5">Pembeli</Typography>
                 <Stack gap={1}>
                   <Typography variant="h5">Nama Penjual</Typography>
                   <Typography variant="body2">{detail[0]?.pembeli.name}</Typography>

@@ -13,7 +13,7 @@ const CardRiwayatTransaksi = (props) => {
 
   const data = [
     { label: 'Status', value: StatusEnum[item.statusTransaksi] },
-    { label: 'Dijual Kepada', value: `${item.penjual.name} (${RoleEnum[item.penjual.role]})` },
+    { label: 'Pembeli', value: `${item.penjual.name} (${RoleEnum[item.penjual.role]})` },
     { label: 'Tipe Cabai', value: CabaiEnum[item.lahan.tipeCabai] },
     { label: 'Jumlah Dijual', value: `${formatNumber(item.jumlahDijual)} kuintal` },
     { label: 'Harga Per kg', value: formatRupiah(item.hargaJual) }

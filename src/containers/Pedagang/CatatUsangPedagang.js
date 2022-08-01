@@ -66,13 +66,13 @@ function CatatUsangPedagang() {
                 formikProps={formikProps}
               />
               <FormikController
-                control="number"
+                control="numberweight"
                 label="Jumlah Cabai Usang (kg)"
                 name="jumlahUsang"
                 formikProps={formikProps}
               />
               <FormikController
-                control="number"
+                control="numbercurrency"
                 label="Harga Jual Per kg (Rp)"
                 name="hargaJual"
                 formikProps={formikProps}
@@ -93,7 +93,7 @@ function CatatUsangPedagang() {
                 <BaseButton
                   fullWidth
                   type="submit"
-                  disabled={!(formikProps.isValid && formikProps.dirty)}>
+                  disabled={!(formikProps.isValid && formikProps.dirty) || loading}>
                   {loading ? 'Memuat...' : 'Kirim'}
                 </BaseButton>
               </Box>

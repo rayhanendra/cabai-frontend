@@ -1,7 +1,8 @@
 import { Box, Stack, Typography } from '@mui/material';
 import BaseButton from 'components/Base/BaseButton';
 import BaseCard from 'components/Base/BaseCard';
-import { Fragment } from 'react';
+import BaseLoading from 'components/Base/BaseLoading';
+import { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { acceptTransaksi, declineTransaksi, deleteTransaksi } from 'redux/slices/transaksi';
 import { CabaiEnum, RoleEnum, StatusEnum } from 'utils/constants';
@@ -13,16 +14,33 @@ const CardTransaksi = (props) => {
 
   const dispatch = useDispatch();
 
+  const [loading, setLoading] = useState(false);
+
   const handleDelete = () => {
-    dispatch(deleteTransaksi(item._id));
+    setLoading(true);
+    dispatch(deleteTransaksi(item._id))
+      .unwrap()
+      .then(() => {})
+      .catch(() => {})
+      .finally(() => setLoading(false));
   };
 
   const handleDecline = () => {
-    dispatch(declineTransaksi(item._id));
+    setLoading(true);
+    dispatch(declineTransaksi(item._id))
+      .unwrap()
+      .then(() => {})
+      .catch(() => {})
+      .finally(() => setLoading(false));
   };
 
   const handleAccept = () => {
-    dispatch(acceptTransaksi(item._id));
+    setLoading(true);
+    dispatch(acceptTransaksi(item._id))
+      .unwrap()
+      .then(() => {})
+      .catch(() => {})
+      .finally(() => setLoading(false));
   };
 
   if (!item) return <Fragment />;
@@ -35,17 +53,27 @@ const CardTransaksi = (props) => {
         <Stack gap={1}>
           {type === 'diajukan' && (
             <Stack direction="row" alignItems="center" justifyContent="space-between">
-              <Typography>Dijual Kepada</Typography>
+              <Typography>Pembeli</Typography>
               <Typography variant="h6">
-                {item.pembeli?.name} ({RoleEnum[item.pembeli?.role]})
+                {item.pembeli ? item.pembeli?.name : item.namaPembeli} (
+                {item.pembeli ? RoleEnum[item.pembeli?.role] : RoleEnum[item.tipePembeli]}){' '}
               </Typography>
             </Stack>
           )}
           {type === 'konfirmasi' && (
             <Stack direction="row" alignItems="center" justifyContent="space-between">
-              <Typography>Dibeli Dari</Typography>
+              <Typography>Penjual</Typography>
               <Typography variant="h6">
                 {item.penjual?.name} ({RoleEnum[item.penjual?.role]})
+              </Typography>
+            </Stack>
+          )}
+          {type === 'diterima' && (
+            <Stack direction="row" alignItems="center" justifyContent="space-between">
+              <Typography>Pembeli</Typography>
+              <Typography variant="h6">
+                {item.pembeli ? item.pembeli?.name : item.namaPembeli} (
+                {item.pembeli ? RoleEnum[item.pembeli?.role] : RoleEnum[item.tipePembeli]})
               </Typography>
             </Stack>
           )}
@@ -55,32 +83,62 @@ const CardTransaksi = (props) => {
           </Stack>
           <Stack direction="row" justifyContent="space-between">
             <Typography>Jumlah Dijual</Typography>
-            <Typography variant="h6">{formatNumber(item.jumlahDijual)}</Typography>
+            <Typography variant="h6">{formatNumber(item.jumlahDijual)} kuintal</Typography>
           </Stack>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
-            <Typography>Harga jual Per kg</Typography>
+            <Typography>Harga Jual Per kg</Typography>
             <Typography variant="h6">{formatRupiah(item.hargaJual)}</Typography>
           </Stack>
-          {button && (
-            <Box display="flex" flexDirection="row" alignItems="center" gap={2} mt={1}>
-              {button === 'diajukan' && (
-                <>
-                  <BaseButton shape="error" variant="outlined" fullWidth onClick={handleDelete}>
-                    Batal
-                  </BaseButton>
-                </>
-              )}
-              {button === 'konfirmasi' && (
-                <>
-                  <BaseButton shape="error" variant="outlined" fullWidth onClick={handleDecline}>
-                    Tolak
-                  </BaseButton>
-                  <BaseButton fullWidth onClick={handleAccept}>
-                    Terima
-                  </BaseButton>
-                </>
-              )}
+          {loading ? (
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              border="1px solid gray"
+              borderRadius={2}
+              p={1}
+              mt={1}
+              color="gray">
+              <BaseLoading />
             </Box>
+          ) : (
+            button && (
+              <Box display="flex" flexDirection="row" alignItems="center" gap={2} mt={1}>
+                {button === 'diajukan' && (
+                  <>
+                    <BaseButton
+                      shape="error"
+                      variant="outlined"
+                      fullWidth
+                      onClick={handleDelete}
+                      loading={loading}
+                      disabled={loading}>
+                      Batal
+                    </BaseButton>
+                  </>
+                )}
+                {button === 'konfirmasi' && (
+                  <>
+                    <BaseButton
+                      shape="error"
+                      variant="outlined"
+                      fullWidth
+                      onClick={handleDecline}
+                      loading={loading}
+                      disabled={loading}>
+                      Tolak
+                    </BaseButton>
+                    <BaseButton
+                      fullWidth
+                      onClick={handleAccept}
+                      loading={loading}
+                      disabled={loading}>
+                      Terima
+                    </BaseButton>
+                  </>
+                )}
+              </Box>
+            )
           )}
         </Stack>
       </BaseCard>

@@ -115,7 +115,7 @@ function CatatLahan() {
                   control="number"
                   id="luasLahan"
                   name="luasLahan"
-                  label="Luas Lahan (Ha)"
+                  label="Luas Lahan (ha)"
                   formikProps={formikProps}
                 />
                 <Typography variant="h5">Modal Penanaman</Typography>

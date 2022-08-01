@@ -41,7 +41,7 @@ function StokPedagang() {
               borderRadius={1}
               bgcolor="white">
               <Typography variant="h6">Jumlah Total:</Typography>
-              <Typography variant="h6">{dashboard.stokCMB} kuintal</Typography>
+              <Typography variant="h6">{dashboard.stokCMB ?? '-'} kuintal</Typography>
             </Box>
             {/* <Box p={2} mt={1} borderRadius={1} bgcolor="white">
               <Typography>Stok Cabai Merah Besar (kg)</Typography>
@@ -64,7 +64,7 @@ function StokPedagang() {
               borderRadius={1}
               bgcolor="white">
               <Typography variant="h6">Jumlah Total:</Typography>
-              <Typography variant="h6">{dashboard.stokCMK} kuintal</Typography>
+              <Typography variant="h6">{dashboard.stokCMK ?? '-'} kuintal</Typography>
             </Box>
             {/* <Box p={2} mt={1} borderRadius={1} bgcolor="white">
               <Typography>Stok Cabai Merah Keriting (kg)</Typography>
@@ -87,7 +87,7 @@ function StokPedagang() {
               borderRadius={1}
               bgcolor="white">
               <Typography variant="h6">Jumlah Total:</Typography>
-              <Typography variant="h6">{dashboard.stokCRM} kuintal</Typography>
+              <Typography variant="h6">{dashboard.stokCRM ?? '-'} kuintal</Typography>
             </Box>
             {/* <Box p={2} mt={1} borderRadius={1} bgcolor="white">
               <Typography>Stok Cabai Rawit Merah (kg)</Typography>

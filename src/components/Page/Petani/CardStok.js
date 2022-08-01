@@ -27,7 +27,7 @@ const CardStok = (props) => {
           <Typography variant="h6">{formatNumber(item.hasilPanenGagal)}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Harga jual per kg (Rp)</Typography>
+          <Typography>Harga Jual Per kg (Rp)</Typography>
           <Typography variant="h6">{formatRupiah(item.hargaJual)}</Typography>
         </Stack>
       </Stack>

@@ -65,10 +65,12 @@ function Daftar() {
       .min(3, 'Panjang nama minimal 3 karakter')
       .max(55, 'Panjang nama maksimal 55 karakter')
       .required('Nama diperlukan'),
-    email: yup
-      .string('Masukkan email')
-      .email('Masukkan email dengan benar')
-      .required('Email diperlukan'),
+    phone: yup
+      .string('Masukkan no.telp')
+      .min(7, 'Panjang no.telp minimal 7 angka')
+      .max(14, 'Panjang no.telp maksimal 14 angka')
+      .required('No.telp diperlukan'),
+    email: yup.string('Masukkan email').email('Masukkan email dengan benar'),
     password: yup
       .string('Masukkan password')
       .min(6, 'Panjang password minimal 6 karakter')
@@ -88,18 +90,22 @@ function Daftar() {
     role: yup.string('Masukkan peran').required('Peran diperlukan')
   });
   const onSubmit = (formValue) => {
-    const { name, email, password, provinsi, kecamatan, kabupaten, alamat, role } = formValue;
+    const { name, phone, email, password, provinsi, kecamatan, kabupaten, alamat, role } =
+      formValue;
     setLoading(true);
     dispatch(
       signup({
-        name,
-        email,
-        password,
-        provinsi,
-        kecamatan,
-        kabupaten,
-        alamat,
-        role
+        data: {
+          name,
+          phone,
+          email,
+          password,
+          provinsi,
+          kecamatan,
+          kabupaten,
+          alamat,
+          role
+        }
       })
     )
       .unwrap()
@@ -140,6 +146,14 @@ function Daftar() {
                   id="name"
                   name="name"
                   label="Nama"
+                  formikProps={formikProps}
+                />
+                <FormikController
+                  control="textfield"
+                  fullWidth
+                  id="phone"
+                  name="phone"
+                  label="Nomor Telpon"
                   formikProps={formikProps}
                 />
                 <FormikController

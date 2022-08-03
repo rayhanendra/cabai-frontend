@@ -2,17 +2,18 @@ import axios from 'axios';
 import authHeader from './auth-header';
 const API_URL = process.env.REACT_APP_API_URL;
 
-const signup = (name, email, password, provinsi, kecamatan, kabupaten, alamat, role) => {
+const signup = ({ data }) => {
   return axios
     .post(API_URL + 'auth/signup', {
-      name,
-      email,
-      password,
-      provinsi,
-      kecamatan,
-      kabupaten,
-      alamat,
-      role
+      name: data.name,
+      phone: data.phone,
+      email: data.email,
+      password: data.password,
+      provinsi: data.provinsi,
+      kecamatan: data.kecamatan,
+      kabupaten: data.kabupaten,
+      alamat: data.alamat,
+      role: data.role
     })
     .then((response) => {
       if (response.data) {

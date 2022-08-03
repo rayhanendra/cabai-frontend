@@ -21,7 +21,7 @@ function Masuk() {
     password: ''
   };
   const validationSchema = yup.object({
-    account: yup.string('Masukkan email/no.telp').required('Email diperlukan'),
+    account: yup.string('Masukkan no.telp/email').required('No.telp/email diperlukan'),
     password: yup
       .string('Masukkan password')
       .min(6, 'Panjang password minimal 6 karakter')
@@ -70,6 +70,7 @@ function Masuk() {
                   id="account"
                   name="account"
                   label="Akun"
+                  placeholder="No.telp/email"
                 />
                 <FormikController
                   control="textfield"

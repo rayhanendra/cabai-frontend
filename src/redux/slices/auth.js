@@ -8,33 +8,21 @@ import { PURGE } from 'redux-persist';
 const user = JSON.parse(localStorage.getItem('user'));
 // const childUser = JSON.parse(localStorage.getItem('child-user'));
 
-export const signup = createAsyncThunk(
-  'auth/signup',
-  async ({ name, email, password, provinsi, kecamatan, kabupaten, alamat, role }, thunkAPI) => {
-    try {
-      const response = await AuthService.signup(
-        name,
-        email,
-        password,
-        provinsi,
-        kecamatan,
-        kabupaten,
-        alamat,
-        role
-      );
-      thunkAPI.dispatch(setMessage(response));
-      return { user: response.data.user };
-    } catch (error) {
-      const response = error.response;
-      const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-      thunkAPI.dispatch(setMessage(response));
-      return thunkAPI.rejectWithValue();
-    }
+export const signup = createAsyncThunk('auth/signup', async (data, thunkAPI) => {
+  try {
+    const response = await AuthService.signup(data);
+    thunkAPI.dispatch(setMessage(response));
+    return { user: response.data.user };
+  } catch (error) {
+    const response = error.response;
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    thunkAPI.dispatch(setMessage(response));
+    return thunkAPI.rejectWithValue();
   }
-);
+});
 
 export const signin = createAsyncThunk('auth/signin', async (data, thunkAPI) => {
   try {

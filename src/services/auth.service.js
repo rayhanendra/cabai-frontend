@@ -23,11 +23,11 @@ const signup = (name, email, password, provinsi, kecamatan, kabupaten, alamat, r
     });
 };
 
-const signin = (email, password) => {
+const signin = ({ data }) => {
   return axios
     .post(API_URL + 'auth/signin', {
-      email,
-      password
+      account: data.account,
+      password: data.password
     })
     .then((response) => {
       if (response.data) {

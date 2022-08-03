@@ -17,23 +17,20 @@ function Masuk() {
   const navigate = useNavigate();
 
   const initialValues = {
-    email: '',
+    account: '',
     password: ''
   };
   const validationSchema = yup.object({
-    email: yup
-      .string('Masukkan email')
-      .email('Masukkan email dengan benar')
-      .required('Email diperlukan'),
+    account: yup.string('Masukkan email/no.telp').required('Email diperlukan'),
     password: yup
       .string('Masukkan password')
       .min(6, 'Panjang password minimal 6 karakter')
       .required('Password dibutuhkan')
   });
   const onSubmit = (formValue) => {
-    const { email, password } = formValue;
+    const { account, password } = formValue;
     setLoading(true);
-    dispatch(signin({ email, password }))
+    dispatch(signin({ data: { account, password } }))
       .unwrap()
       .then(() => {})
       .catch(() => {
@@ -70,10 +67,9 @@ function Masuk() {
                 <FormikController
                   control="textfield"
                   fullWidth
-                  id="email"
-                  name="email"
-                  label="Email"
-                  type="email"
+                  id="account"
+                  name="account"
+                  label="Akun"
                 />
                 <FormikController
                   control="textfield"

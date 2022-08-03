@@ -20,7 +20,7 @@ import userService from 'services/user.service';
 import { useState } from 'react';
 import { addTransaksi } from 'redux/slices/transaksi';
 import { today } from 'utils/MomentFormat';
-import { CheckBoxOutlineBlankRounded, CheckBoxRounded } from '@mui/icons-material';
+import { RadioButtonChecked, RadioButtonUnchecked } from '@mui/icons-material';
 import urlFormData from 'utils/urlFormData';
 
 function CatatTransaksiPedagang() {
@@ -173,8 +173,8 @@ function CatatTransaksiPedagang() {
                           value="yes"
                           control={
                             <Radio
-                              icon={<CheckBoxOutlineBlankRounded />}
-                              checkedIcon={<CheckBoxRounded />}
+                              icon={<RadioButtonUnchecked />}
+                              checkedIcon={<RadioButtonChecked />}
                             />
                           }
                           label={<Typography variant="h6">Pedangang punya akun</Typography>}
@@ -219,8 +219,8 @@ function CatatTransaksiPedagang() {
                           value="no"
                           control={
                             <Radio
-                              icon={<CheckBoxOutlineBlankRounded />}
-                              checkedIcon={<CheckBoxRounded />}
+                              icon={<RadioButtonUnchecked />}
+                              checkedIcon={<RadioButtonChecked />}
                             />
                           }
                           label={<Typography variant="h6">Pedangang belum punya akun</Typography>}

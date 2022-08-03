@@ -16,7 +16,7 @@ import {
   getLahanById
 } from 'redux/slices/lahan';
 import { momentFormat, today } from 'utils/MomentFormat';
-import { CabaiEnum } from 'utils/constants';
+import { CabaiEnum, StatusEnumSmall } from 'utils/constants';
 import urlFormData from 'utils/urlFormData';
 
 function DetailLahanPetani() {
@@ -45,11 +45,14 @@ function DetailLahanPetani() {
     }
   ];
 
-  const dataPanen = detail.transaksi?.map(({ _id, hargaJual, jumlahDijual, totalProduksi }) => ({
-    id: _id,
-    hasil: `${formatNumber(jumlahDijual)} kuintal x ${formatRupiah(hargaJual)}`,
-    total: formatRupiah(totalProduksi)
-  }));
+  const dataPanen = detail.transaksi?.map(
+    ({ _id, hargaJual, jumlahDijual, totalProduksi, statusTransaksi }) => ({
+      id: _id,
+      hasil: `${formatNumber(jumlahDijual)} kuintal x ${formatRupiah(hargaJual)}`,
+      total: formatRupiah(totalProduksi).luasRusak,
+      statusTransaksi
+    })
+  );
 
   const dataModal = [
     { label: 'Benih', value: detail.modalBenih },
@@ -195,7 +198,7 @@ function DetailLahanPetani() {
       <Stack direction="column" p={2} gap={2}>
         <Typography variant="h5">Hasil Panen</Typography>
         <Stack direction="column" gap={2}>
-          {dataPanen?.map(({ id, hasil, total }, index) => (
+          {dataPanen?.map(({ id, hasil, total, statusTransaksi }, index) => (
             <Stack key={index} direction="row" justifyContent="space-between" alignItems="end">
               <Stack direction="column">
                 <Typography variant="body2">Hasil Panen {index + 1}</Typography>
@@ -205,7 +208,12 @@ function DetailLahanPetani() {
                 <Button
                   sx={{ px: 0 }}
                   onClick={() => {
-                    navigate('/petani/transaksi/detail-transaksi/' + id);
+                    navigate(
+                      '/petani/transaksi/detail-transaksi/' +
+                        StatusEnumSmall[statusTransaksi] +
+                        '/' +
+                        id
+                    );
                   }}>
                   <Typography textTransform="none">Cek Transaksi</Typography>
                 </Button>
@@ -240,8 +248,8 @@ function DetailLahanPetani() {
           <Typography variant="h5">{formatRupiah(detail.rataanHargaJual) ?? 0}</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between" alignItems="center">
-          <Typography variant="body2">Total Jumlah Panen</Typography>
-          <Typography variant="h5">{detail.jumlahPanen} kuintal</Typography>
+          <Typography variant="body2">Jumlah Transaksi</Typography>
+          <Typography variant="h5">{detail.countTransaksi} kuintal</Typography>
         </Stack>
       </Stack>
       <Stack p={2} gap={2}>

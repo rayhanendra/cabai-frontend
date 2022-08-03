@@ -1,5 +1,4 @@
 import { Box, Divider, Stack, Typography } from '@mui/material';
-import BaseTabs from 'components/Base/BaseTabs';
 import TheBottomNavigation from 'components/Base/TheBottomNavigation';
 import TheProfileHeader from 'components/Base/TheProfileHeader';
 import FormikController from 'components/Formik/FormikController';
@@ -15,8 +14,6 @@ const FormObserver = () => {
   const { values } = useFormikContext();
   const time = getYearMonthFormat(values.bulanTahun);
   useEffect(() => {
-    console.log('FormObserver::values', values);
-    console.log('ini time', time);
     dispatch(getStokByMonth(time));
   }, [time]);
   return null;
@@ -25,8 +22,7 @@ const FormObserver = () => {
 function BerandaPedagang() {
   const dispatch = useDispatch();
 
-  const { dashboard, transaksi } = useSelector((state) => state.stok);
-  console.log(dashboard, transaksi);
+  const { transaksi } = useSelector((state) => state.stok);
 
   useEffect(() => {
     dispatch(getSyncStok());
@@ -40,58 +36,6 @@ function BerandaPedagang() {
     <>
       <TheProfileHeader />
       <Stack gap={3} p={2} mb={2} pb="56px">
-        <BaseTabs
-          variant="contained"
-          labels={['Cabai Merah Besar', 'Cabai Merah Keriting', 'Cabai Rawit Merah']}>
-          <Box display="flex" flexDirection="column" gap={1}>
-            <Typography>
-              Stok terkini yang anda miliki didapatkan dari pembelian transaksi
-            </Typography>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              p={2}
-              mt={1}
-              borderRadius={1}
-              bgcolor="white">
-              <Typography>Total Stok:</Typography>
-              <Typography variant="h6">{dashboard.stokCMB ?? '-'} kuintal</Typography>
-            </Box>
-          </Box>
-          <Box display="flex" flexDirection="column" gap={1}>
-            <Typography>
-              Stok terkini yang anda miliki didapatkan dari pembelian transaksi
-            </Typography>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              p={2}
-              mt={1}
-              borderRadius={1}
-              bgcolor="white">
-              <Typography>Total Stok:</Typography>
-              <Typography variant="h6">{dashboard.stokCMK ?? '-'} kuintal</Typography>
-            </Box>
-          </Box>
-          <Box display="flex" flexDirection="column" gap={1}>
-            <Typography>
-              Stok terkini yang anda miliki didapatkan dari pembelian transaksi
-            </Typography>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              p={2}
-              mt={1}
-              borderRadius={1}
-              bgcolor="white">
-              <Typography>Total Stok:</Typography>
-              <Typography variant="h6">{dashboard.stokCRM ?? '-'} kuintal</Typography>
-            </Box>
-          </Box>
-        </BaseTabs>
         <Formik initialValues={initialValues}>
           {(formikProps) => (
             <Form>

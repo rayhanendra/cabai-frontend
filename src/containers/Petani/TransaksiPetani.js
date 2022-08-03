@@ -32,7 +32,7 @@ function TransaksiPetani() {
         </BaseButton>
 
         <Box display="flex" flexDirection="column" gap={1}>
-          <Typography variant="h5">Transaksi Diajukan</Typography>
+          <Typography variant="h5">Penjualan</Typography>
           <Box display="flex" alignItems="center" justifyContent="space-between">
             <Typography maxWidth="70%">Menunggu pembeli menerima transaksi anda</Typography>
             <Typography variant="h6" onClick={() => navigate('/petani/riwayat')}>

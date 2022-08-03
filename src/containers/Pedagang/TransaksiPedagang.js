@@ -31,7 +31,7 @@ function TransaksiPedagang() {
           fullWidth>
           <Typography variant="h5">Catat Transaksi</Typography>
         </BaseButton>
-        <BaseTabs labels={['Transaksi Diajukan', 'Konfirmasi Transaksi']}>
+        <BaseTabs labels={['Penjualan', 'Pembelian']}>
           <Stack gap={2}>
             <Stack gap={1}>
               <Stack direction="row" justifyContent="space-between">

@@ -9,9 +9,8 @@ export const formatRupiah = (money) => {
 
 export const formatNumber = (number) => {
   if (!number) return;
-  const round = number.toFixed(1);
 
-  const toComma = round.toString().replace('.', ',');
+  const toComma = number.toString().replace('.', ',');
   const toDecimal = toComma.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
   return toDecimal;
 };

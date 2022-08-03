@@ -15,15 +15,15 @@ const CardLahanPetani = (props) => {
     },
     {
       label: 'Jumlah Batang yang Ditanam',
-      value: item.jumlahBatang
+      value: formatNumber(item.jumlahBatang)
     },
     {
       label: 'Total Hasil Panen (kuintal)',
-      value: `${formatNumber(item.jumlahPanen)} kuintal` ?? '-'
+      value: item.jumlahPanen ? `${formatNumber(item.jumlahPanen)} kuintal` : '0 kuintal'
     },
     {
       label: 'Total Hasil Penjualan',
-      value: formatRupiah(item.jumlahPenjualan) ?? '-'
+      value: formatRupiah(item.jumlahPenjualan) ?? 'Rp 0'
     }
   ];
 

@@ -71,6 +71,13 @@ const optionsGradeCabai = [
   { value: 'n', label: '-' }
 ];
 
+const optionsUsang = [
+  { value: 'dibuang', label: 'Dibuang' },
+  { value: 'diberikan ke orang', label: 'Diberikan ke Orang' },
+  { value: 'dijual murah', label: 'Dijual Murah' },
+  { value: 'lainnya', label: 'Lainnya' }
+];
+
 const CabaiEnum = Object.freeze({
   cabaiMerahBesar: 'Cabai Merah Besar',
   cabaiMerahKeriting: 'Cabai Merah Keriting',
@@ -81,6 +88,12 @@ const StatusEnum = Object.freeze({
   0: 'Diajukan',
   1: 'Ditolak',
   2: 'Diterima'
+});
+
+const StatusEnumSmall = Object.freeze({
+  0: 'diajukan',
+  1: 'ditolak',
+  2: 'diterima'
 });
 
 const RoleEnum = Object.freeze({
@@ -107,8 +120,10 @@ export {
   optionsPedagang,
   optionsRole,
   optionsGradeCabai,
+  optionsUsang,
   CabaiEnum,
   StatusEnum,
+  StatusEnumSmall,
   RoleEnum,
   GradeEnum
 };

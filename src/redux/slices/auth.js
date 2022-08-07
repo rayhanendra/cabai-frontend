@@ -4,6 +4,7 @@ import { setMessage } from './message';
 import AuthService from '../../services/auth.service';
 import { persistor } from 'redux/store';
 import { PURGE } from 'redux-persist';
+import SupervisiService from 'services/supervisi.service';
 
 const user = JSON.parse(localStorage.getItem('user'));
 // const childUser = JSON.parse(localStorage.getItem('child-user'));
@@ -48,7 +49,7 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 
 export const relog = createAsyncThunk('auth/relog', async (data, thunkAPI) => {
   try {
-    const response = await AuthService.relog(data);
+    const response = await SupervisiService.relog(data);
     thunkAPI.dispatch(setMessage(response));
     return { user: response.data.user };
   } catch (error) {
@@ -58,9 +59,9 @@ export const relog = createAsyncThunk('auth/relog', async (data, thunkAPI) => {
   }
 });
 
-export const relogById = createAsyncThunk('auth/relog', async (id, thunkAPI) => {
+export const relogById = createAsyncThunk('auth/relogById', async (id, thunkAPI) => {
   try {
-    const response = await AuthService.relogById(id);
+    const response = await SupervisiService.relogById(id);
     thunkAPI.dispatch(setMessage(response));
     return { user: response.data.user };
   } catch (error) {
@@ -72,7 +73,7 @@ export const relogById = createAsyncThunk('auth/relog', async (id, thunkAPI) => 
 
 export const addSupervisi = createAsyncThunk('auth/addSupervisi', async (data, thunkAPI) => {
   try {
-    const response = await AuthService.addSupervisi(data);
+    const response = await SupervisiService.addSupervisi(data);
     thunkAPI.dispatch(setMessage(response));
     return { user: response.data.petani };
   } catch (error) {

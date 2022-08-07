@@ -37,7 +37,7 @@ function LahanPetani() {
               Lihat Semua
             </Typography>
           </Box>
-          {riwayat.map((item, index) => (
+          {riwayat?.map((item, index) => (
             <CardLahan key={index} item={item} />
           ))}
         </Box>

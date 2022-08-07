@@ -2,7 +2,7 @@ import { Stack, Typography } from '@mui/material';
 import BaseCard from 'components/Base/BaseCard';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CabaiEnum, RoleEnum, StatusEnum } from 'utils/constants';
+import { CabaiEnum, RoleEnum, StatusEnum, StatusEnumSmall } from 'utils/constants';
 import { formatNumber, formatRupiah } from 'utils/Formats';
 import { momentFormat } from 'utils/MomentFormat';
 
@@ -20,7 +20,12 @@ const CardRiwayatTransaksi = (props) => {
   ];
 
   return (
-    <BaseCard onClick={() => navigate(`/petani/transaksi/detail-transaksi/${item._id}`)}>
+    <BaseCard
+      onClick={() =>
+        navigate(
+          `/petani/transaksi/detail-transaksi/${StatusEnumSmall[item.statusTransaksi]}/${item._id}`
+        )
+      }>
       <Stack gap={1}>
         <Typography variant="h6">{momentFormat(item.tanggalPencatatan)}</Typography>
         {data.map(({ label, value }, index) => (

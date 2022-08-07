@@ -1,11 +1,12 @@
-import { Box, Divider, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
+import BaseTabs from 'components/Base/BaseTabs';
 import TheBottomNavigation from 'components/Base/TheBottomNavigation';
 import TheProfileHeader from 'components/Base/TheProfileHeader';
 import FormikController from 'components/Formik/FormikController';
 import { Form, Formik, useFormikContext } from 'formik';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStokByMonth, getSyncStok } from 'redux/slices/stok';
+import { getSummaryPedagang, getSummaryPedagangByMonth } from 'redux/slices/transaksi';
 import { formatRupiah } from 'utils/Formats';
 import { getYearMonthFormat, today } from 'utils/MomentFormat';
 
@@ -14,7 +15,7 @@ const FormObserver = () => {
   const { values } = useFormikContext();
   const time = getYearMonthFormat(values.bulanTahun);
   useEffect(() => {
-    dispatch(getStokByMonth(time));
+    dispatch(getSummaryPedagangByMonth(time));
   }, [time]);
   return null;
 };
@@ -22,10 +23,11 @@ const FormObserver = () => {
 function BerandaPedagang() {
   const dispatch = useDispatch();
 
-  const { transaksi } = useSelector((state) => state.stok);
+  const { summary, summaryByMonth } = useSelector((state) => state.transaksi);
+  // console.log(summary, summaryByMonth);
 
   useEffect(() => {
-    dispatch(getSyncStok());
+    dispatch(getSummaryPedagang());
   }, [dispatch]);
 
   const initialValues = {
@@ -35,63 +37,208 @@ function BerandaPedagang() {
   return (
     <>
       <TheProfileHeader />
-      <Stack gap={3} p={2} mb={2} pb="56px">
-        <Formik initialValues={initialValues}>
-          {(formikProps) => (
-            <Form>
-              <FormObserver />
-              <FormikController
-                control="datepicker"
-                name="bulanTahun"
-                label="Pilih Bulan"
-                month
-                formikProps={formikProps}
-              />
-            </Form>
-          )}
-        </Formik>
-        <Divider />
-        <Stack direction="row" justifyContent="space-between">
-          <Box>
-            <Typography>Total Transaksi</Typography>
-            <Typography variant="h5">{transaksi.totalTransaksi}</Typography>
-          </Box>
-          <Box>
-            <Typography>Transaksi Sukses</Typography>
-            <Typography variant="h5" color="primary.main">
-              {transaksi.transaksiSukses}
-            </Typography>
-          </Box>
-        </Stack>
-        <Box>
-          <Typography>Total Pengeluaran</Typography>
-          <Typography variant="h5">{formatRupiah(transaksi.totalPengeluaran) ?? 0}</Typography>
-        </Box>
-        <Box>
-          <Typography>Pendapatan Cabai Merah Besar</Typography>
-          <Typography variant="h5" color="primary.main">
-            {formatRupiah(transaksi.pendapatanCMB) ?? 0}
-          </Typography>
-        </Box>
-        <Box>
-          <Typography>Pendapatan Cabai Merah Keriting</Typography>
-          <Typography variant="h5" color="primary.main">
-            {formatRupiah(transaksi.pendapatanCMK) ?? 0}
-          </Typography>
-        </Box>
-        <Box>
-          <Typography>Pendapatan Cabai Rawit Merah</Typography>
-          <Typography variant="h5" color="primary.main">
-            {formatRupiah(transaksi.pendapatanCRM) ?? 0}
-          </Typography>
-        </Box>
-        <Box>
-          <Typography>Total Pendapatan</Typography>
-          <Typography variant="h5" color="primary.main">
-            {formatRupiah(transaksi.totalPendapatan) ?? 0}
-          </Typography>
-        </Box>
-      </Stack>
+      <Box p={2} mb={2} pb="56px">
+        <BaseTabs labels={['Total Pendapatan', 'Bulanan']}>
+          {/* Total Pendapatan */}
+          <Stack gap={2}>
+            <Stack bgcolor="primary.main" color="white" p={2} gap={1} borderRadius={2}>
+              <Typography>Total Pendapatan</Typography>
+              <Typography variant="h5">{formatRupiah(summary?.totalPendapatan) ?? 0}</Typography>
+            </Stack>
+            <Box gap={2} py={2} bgcolor="dark.light" borderRadius={2}>
+              <Box
+                color="white"
+                bgcolor="primary.main"
+                px={2}
+                py={1}
+                paddingRight={6}
+                display="inline-flex"
+                borderRadius={'0px 8px 8px 0px'}>
+                <Typography variant="h5">Transaksi</Typography>
+              </Box>
+              <Stack gap={2} p={2}>
+                <Stack direction="row" justifyContent="space-between">
+                  <Box>
+                    <Typography>Total Transaksi</Typography>
+                    <Typography variant="h5">{summary?.countTransaksiAll}</Typography>
+                  </Box>
+                </Stack>
+                <Box>
+                  <Typography>Total Cabai Dibeli</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {summary?.countTransaksiSuksesBeli ?? 0}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>Total Cabai Dijual</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {summary?.countTransaksiSuksesJual ?? 0}
+                  </Typography>
+                </Box>
+              </Stack>
+            </Box>
+            <Box gap={2} py={2} bgcolor="dark.light" borderRadius={2}>
+              <Box
+                color="white"
+                bgcolor="primary.main"
+                px={2}
+                py={1}
+                paddingRight={6}
+                display="inline-flex"
+                borderRadius={'0px 8px 8px 0px'}>
+                <Typography variant="h5">Pendapatan</Typography>
+              </Box>
+              <Stack gap={2} p={2}>
+                <Box>
+                  <Typography>Pendapatan Cabai Merah Besar</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summary?.pendapatanCMB) ?? 0}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>Pendapatan Cabai Merah Keriting</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summary?.pendapatanCMK) ?? 0}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>Pendapatan Cabai Rawit Merah</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summary?.pendapatanCRM) ?? 0}
+                  </Typography>
+                </Box>
+                <Typography variant="h5">Total Pendapatan</Typography>
+                <Stack direction="row" gap={1}>
+                  <Typography>Pembelian</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summary?.totalPendapatan) ?? 0}
+                  </Typography>
+                </Stack>
+                <Stack direction="row" gap={1}>
+                  <Typography>Penjualan</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summary?.totalPendapatan) ?? 0}
+                  </Typography>
+                </Stack>
+                <Stack direction="row" gap={1}>
+                  <Typography>Pendapatan</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summary?.totalPendapatan) ?? 0}
+                  </Typography>
+                </Stack>
+              </Stack>
+            </Box>
+          </Stack>
+          {/* Bulanan */}
+          <Stack gap={2}>
+            <Formik initialValues={initialValues}>
+              {(formikProps) => (
+                <Form>
+                  <FormObserver />
+                  <Stack>
+                    <FormikController
+                      control="datepicker"
+                      name="bulanTahun"
+                      label="Pilih Bulan"
+                      month
+                      formikProps={formikProps}
+                    />
+                  </Stack>
+                </Form>
+              )}
+            </Formik>
+            <Stack bgcolor="primary.main" color="white" p={2} gap={1} borderRadius={2}>
+              <Typography>Pendapatan Bulan Ini</Typography>
+              <Typography variant="h5">
+                {formatRupiah(summaryByMonth?.totalPendapatan) ?? 0}
+              </Typography>
+            </Stack>
+            <Box gap={2} py={2} bgcolor="dark.light" borderRadius={2}>
+              <Box
+                color="white"
+                bgcolor="primary.main"
+                px={2}
+                py={1}
+                paddingRight={6}
+                display="inline-flex"
+                borderRadius={'0px 8px 8px 0px'}>
+                <Typography variant="h5">Transaksi</Typography>
+              </Box>
+              <Stack gap={2} p={2}>
+                <Stack direction="row" justifyContent="space-between">
+                  <Box>
+                    <Typography>Total Transaksi</Typography>
+                    <Typography variant="h5">{summaryByMonth?.countTransaksiAll}</Typography>
+                  </Box>
+                </Stack>
+                <Box>
+                  <Typography>Total Cabai Dibeli</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summaryByMonth?.totalPembelian) ?? 0}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>Total Cabai Dijual</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summaryByMonth?.totalPenjualan) ?? 0}
+                  </Typography>
+                </Box>
+              </Stack>
+            </Box>
+            <Box gap={2} py={2} bgcolor="dark.light" borderRadius={2}>
+              <Box
+                color="white"
+                bgcolor="primary.main"
+                px={2}
+                py={1}
+                paddingRight={6}
+                display="inline-flex"
+                borderRadius={'0px 8px 8px 0px'}>
+                <Typography variant="h5">Pendapatan</Typography>
+              </Box>
+              <Stack gap={2} p={2}>
+                <Box>
+                  <Typography>Pendapatan Cabai Merah Besar</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summaryByMonth?.pendapatanCMB) ?? 0}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>Pendapatan Cabai Merah Keriting</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summaryByMonth?.pendapatanCMK) ?? 0}
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography>Pendapatan Cabai Rawit Merah</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summaryByMonth?.pendapatanCRM) ?? 0}
+                  </Typography>
+                </Box>
+                <Typography variant="h5">Total Pendapatan</Typography>
+                <Stack direction="row" gap={1}>
+                  <Typography>Pembelian</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summaryByMonth?.totalPendapatan) ?? 0}
+                  </Typography>
+                </Stack>
+                <Stack direction="row" gap={1}>
+                  <Typography>Penjualan</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summaryByMonth?.totalPendapatan) ?? 0}
+                  </Typography>
+                </Stack>
+                <Stack direction="row" gap={1}>
+                  <Typography>Pendapatan</Typography>
+                  <Typography variant="h5" color="primary.main">
+                    {formatRupiah(summaryByMonth?.totalPendapatan) ?? 0}
+                  </Typography>
+                </Stack>
+              </Stack>
+            </Box>
+          </Stack>
+        </BaseTabs>
+      </Box>
       <TheBottomNavigation role="pedagang" />
     </>
   );

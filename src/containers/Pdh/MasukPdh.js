@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import FormikController from 'components/Formik/FormikController';
 import { addSupervisi } from 'redux/slices/auth';
+import BaseHeader from 'components/Base/BaseHeader';
 
 function MasukPdh() {
   const [loading, setLoading] = useState(false);
@@ -14,23 +15,20 @@ function MasukPdh() {
   const dispatch = useDispatch();
 
   const initialValues = {
-    email: '',
+    account: '',
     password: ''
   };
   const validationSchema = yup.object({
-    email: yup
-      .string('Enter your email')
-      .email('Enter a valid email')
-      .required('Email is required'),
+    account: yup.string('Masukkan email/no.telp').required('Email/no.telp diperlukan'),
     password: yup
-      .string('Enter your password')
-      .min(6, 'Password should be of minimum 6 characters length')
-      .required('Password is required')
+      .string('Masukkan password')
+      .min(6, 'Passord minimum 6 karakter')
+      .required('Password diperlukan')
   });
   const onSubmit = (formValue) => {
-    const { email, password } = formValue;
+    const { account, password } = formValue;
     const formData = new URLSearchParams();
-    formData.append('email', email);
+    formData.append('account', account);
     formData.append('password', password);
     setLoading(true);
     dispatch(addSupervisi(formData))
@@ -43,9 +41,7 @@ function MasukPdh() {
 
   return (
     <>
-      <Box p={2} variant="h4">
-        Sistem Cabai
-      </Box>
+      <BaseHeader label="Sistem Cabai" to={-1} />
       <Box display="flex" flexDirection="column" gap={2} p={2}>
         <Typography variant="h4">Masuk</Typography>
         <Typography>
@@ -66,10 +62,9 @@ function MasukPdh() {
                 <FormikController
                   control="textfield"
                   fullWidth
-                  id="email"
-                  name="email"
-                  label="Email"
-                  type="email"
+                  id="account"
+                  name="account"
+                  label="Email / No.Telp"
                   formikProps={formikProps}
                 />
                 <FormikController

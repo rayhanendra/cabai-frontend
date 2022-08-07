@@ -3,29 +3,29 @@ import authHeader from './auth-header';
 const API_URL = process.env.REACT_APP_API_URL;
 
 const getAllUsang = async () => {
-  return axios.get(API_URL + 'usang/lihatusang', { headers: authHeader() });
+  return axios.get(API_URL + 'usang', { headers: authHeader() });
 };
 
 const getUsangById = async (id) => {
-  return axios.get(API_URL + 'usang/lihatusang/' + id, { headers: authHeader() });
+  return axios.get(API_URL + 'usang/' + id, { headers: authHeader() });
 };
 
-const getUsangByType = async (type) => {
-  return axios.get(API_URL + 'usang/lihatusangbytype/' + type, { headers: authHeader() });
-};
+// const getUsangByType = async (type) => {
+//   return axios.get(API_URL + 'usang/tipe/' + type, { headers: authHeader() });
+// };
 
 const deleteUsang = async (id) => {
-  return axios.delete(API_URL + 'usang/hapususang/' + id, { headers: authHeader() });
+  return axios.delete(API_URL + 'usang/hapus/' + id, { headers: authHeader() });
 };
 
 const addUsang = async (data) => {
-  return axios.post(API_URL + 'usang/tambahusang', data, { headers: authHeader() });
+  return axios.post(API_URL + 'usang/tambah', data, { headers: authHeader() });
 };
 
 const usangService = {
   getAllUsang,
   getUsangById,
-  getUsangByType,
+  // getUsangByType,
   deleteUsang,
   addUsang
 };

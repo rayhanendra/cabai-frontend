@@ -12,25 +12,33 @@ function DataDiriPdh() {
 
   const { user } = useSelector((state) => state.auth);
   const { profile } = useSelector((state) => state.user);
+
+  function stringAvatar(name) {
+    return {
+      children: `${name?.split(' ')[0][0]}`
+    };
+  }
+
   useEffect(() => {
-    dispatch(getProfile(user.id));
+    if (!profile) dispatch(getProfile(user.id));
   }, [dispatch]);
 
   const handleLogout = () => {
     dispatch(logout());
   };
+
   return (
     <>
       <BaseHeader label="Data Diri" to={-1} />
       <Stack spacing={2} p={2}>
-        <Avatar>P</Avatar>
+        <Avatar {...stringAvatar(profile?.name)} />
         <Box>
           <Typography>Nama</Typography>
           <Typography variant="h5">{profile?.name}</Typography>
         </Box>
         <Box>
           <Typography>Peran</Typography>
-          <Typography variant="h5"> {RoleEnum[profile?.role]}</Typography>
+          <Typography variant="h5">{RoleEnum[profile?.role]}</Typography>
         </Box>
         <Box>
           <Typography>Alamat</Typography>
@@ -38,15 +46,15 @@ function DataDiriPdh() {
         </Box>
         <Box>
           <Typography>Kecamatan</Typography>
-          <Typography variant="h5">{profile?.kecamatan.name}</Typography>
+          <Typography variant="h5">{profile?.kecamatan?.name}</Typography>
         </Box>
         <Box>
           <Typography>Kecamatan</Typography>
-          <Typography variant="h5">{profile?.kabupaten.name}</Typography>
+          <Typography variant="h5">{profile?.kabupaten?.name}</Typography>
         </Box>
         <Box>
           <Typography>Provinsi</Typography>
-          <Typography variant="h5">{profile?.provinsi.name}</Typography>
+          <Typography variant="h5">{profile?.provinsi?.name}</Typography>
         </Box>
         <BaseButton shape="exit" onClick={handleLogout}>
           Keluar

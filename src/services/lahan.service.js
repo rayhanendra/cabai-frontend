@@ -3,19 +3,19 @@ import authHeader from './auth-header';
 const API_URL = process.env.REACT_APP_API_URL;
 
 const getAllLahan = async () => {
-  return axios.get(API_URL + 'lahan/lihatlahan', { headers: authHeader() });
+  return axios.get(API_URL + 'lahan', { headers: authHeader() });
 };
 
 const addLahan = async (data) => {
-  return axios.post(API_URL + 'lahan/tambahlahan', data, { headers: authHeader() });
+  return axios.post(API_URL + 'lahan/tambah', data, { headers: authHeader() });
 };
 
 const getLahanName = async () => {
-  return axios.get(API_URL + 'lahan/namalahan', { headers: authHeader() });
+  return axios.get(API_URL + 'lahan/nama', { headers: authHeader() });
 };
 
 const getLahanById = async (id) => {
-  return axios.get(API_URL + 'lahan/lihatlahan/' + id, { headers: authHeader() });
+  return axios.get(API_URL + 'lahan/' + id, { headers: authHeader() });
 };
 
 const editLuasRusakLahan = async (id, data) => {
@@ -23,7 +23,7 @@ const editLuasRusakLahan = async (id, data) => {
 };
 
 const getTipeLahan = async () => {
-  return axios.get(API_URL + 'lahan/lihattipelahan', { headers: authHeader() });
+  return axios.get(API_URL + 'lahan/tipe', { headers: authHeader() });
 };
 
 const finishLahan = async (id, data) => {
@@ -31,7 +31,7 @@ const finishLahan = async (id, data) => {
 };
 
 const cancelFinishLahan = async (id) => {
-  return axios.put(API_URL + 'lahan/batalselesai/' + id, {}, { headers: authHeader() });
+  return axios.put(API_URL + 'lahan/aktifkan/' + id, {}, { headers: authHeader() });
 };
 
 const editModal = async (id, data) => {

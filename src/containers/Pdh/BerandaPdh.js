@@ -7,12 +7,12 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getAllSupervisi } from 'redux/slices/pdh';
+import { getAllSupervisi } from 'redux/slices/supervisi';
 
 function BerandaPdh() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { petani } = useSelector((state) => state.pdh);
+  const { petani } = useSelector((state) => state.supervisi);
 
   useEffect(() => {
     dispatch(getAllSupervisi());
@@ -22,13 +22,6 @@ function BerandaPdh() {
     <>
       <TheProfileHeader />
       <Stack gap={2} p={2} mb="56px">
-        <Box>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lacus, felis netus neque,
-            sapien lobortis quisque. Mi id amet sed elit, ultrices. Dapibus vestibulum viverra est
-            habitasse ultrices pretium nisi, dis. Magna.
-          </Typography>
-        </Box>
         <BaseButton
           shape="withicon"
           removeIcon

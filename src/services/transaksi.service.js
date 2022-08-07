@@ -3,23 +3,23 @@ import authHeader from './auth-header';
 const API_URL = process.env.REACT_APP_API_URL;
 
 const getAllTransaksi = async () => {
-  return axios.get(API_URL + 'transaksi/lihattransaksi', { headers: authHeader() });
+  return axios.get(API_URL + 'transaksi', { headers: authHeader() });
 };
 
 const getTransaksiById = async (id) => {
-  return axios.get(API_URL + 'transaksi/lihattransaksi/' + id, { headers: authHeader() });
+  return axios.get(API_URL + 'transaksi/' + id, { headers: authHeader() });
 };
 
-const getTransaksiByType = async (tipe) => {
-  return axios.get(API_URL + 'transaksi/lihattransaksi' + tipe, { headers: authHeader() });
+const addTransaksiPetani = async (data) => {
+  return axios.post(API_URL + 'transaksi/petani/tambah', data, { headers: authHeader() });
 };
 
-const addTransaksi = async (data) => {
-  return axios.post(API_URL + 'transaksi/tambahtransaksi', data, { headers: authHeader() });
+const addTransaksiPedagang = async (data) => {
+  return axios.post(API_URL + 'transaksi/pedagang/tambah', data, { headers: authHeader() });
 };
 
 const deleteTransaksi = async (id) => {
-  return axios.delete(API_URL + 'transaksi/hapustransaksi/' + id, { headers: authHeader() });
+  return axios.delete(API_URL + 'transaksi/hapus/' + id, { headers: authHeader() });
 };
 
 const acceptTransaksi = async (id) => {
@@ -31,7 +31,19 @@ const declineTransaksi = async (id) => {
 };
 
 const editTransaksi = async ({ id, formData }) => {
-  return axios.put(API_URL + 'transaksi/ubahstatus/ajukankembali/' + id, formData, {
+  return axios.put(API_URL + 'transaksi/ubahstatus/ajukan/' + id, formData, {
+    headers: authHeader()
+  });
+};
+
+const getSummaryPedagang = async () => {
+  return axios.get(API_URL + 'transaksi/pedagang/summary', {
+    headers: authHeader()
+  });
+};
+
+const getSummaryPedagangByMonth = async (month) => {
+  return axios.get(API_URL + 'transaksi/pedagang/summary/' + month, {
     headers: authHeader()
   });
 };
@@ -39,11 +51,13 @@ const editTransaksi = async ({ id, formData }) => {
 const transaksiService = {
   getAllTransaksi,
   getTransaksiById,
-  getTransaksiByType,
-  addTransaksi,
+  addTransaksiPetani,
+  addTransaksiPedagang,
   deleteTransaksi,
   acceptTransaksi,
   declineTransaksi,
-  editTransaksi
+  editTransaksi,
+  getSummaryPedagang,
+  getSummaryPedagangByMonth
 };
 export default transaksiService;

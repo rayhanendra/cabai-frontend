@@ -93,7 +93,7 @@ function RouterConfig() {
         <Route path="beranda" element={<BerandaPdh />} />
         <Route path="akuisisi-akun" element={<MasukPdh />} />
         <Route path="riwayat-akun" element={<RiwayatAkunPdh />} />
-        <Route path="riwayat-akun/detail-riwayat-akun/:id" element={<DetailRiwayatAkunPdh />} />
+        <Route path="riwayat-akun/detail/:id" element={<DetailRiwayatAkunPdh />} />
         <Route path="data-diri" element={<DataDiri />} />
       </Route>
 

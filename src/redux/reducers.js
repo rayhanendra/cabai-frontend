@@ -5,11 +5,10 @@ import storage from 'redux-persist/lib/storage';
 import authReducer from './slices/auth';
 import userReducer from './slices/user';
 import messageReducer from './slices/message';
-import stokSlice from './slices/stok';
 import transaksiSlice from './slices/transaksi';
 import usangSlice from './slices/usang';
 import blankoReducer from './slices/blanko';
-import pdhReducer from './slices/pdh';
+import supervisiReducer from './slices/supervisi';
 import lahanReducer from './slices/lahan';
 
 const persistConfig = {
@@ -21,11 +20,10 @@ const reducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   message: messageReducer,
-  stok: stokSlice,
   transaksi: transaksiSlice,
   usang: usangSlice,
   blanko: blankoReducer,
-  pdh: pdhReducer,
+  supervisi: supervisiReducer,
   lahan: lahanReducer
 });
 

@@ -19,11 +19,10 @@ const userSlice = createSlice({
     });
     builder.addCase(getProfile.fulfilled, (state, action) => {
       state.status = 'success';
-      state.profile = action.payload;
+      state.profile = action.payload.data;
     });
-    builder.addCase(getProfile.rejected, (state, action) => {
+    builder.addCase(getProfile.rejected, (state) => {
       state.status = 'failed';
-      state.profile = action.payload;
     });
   }
 });

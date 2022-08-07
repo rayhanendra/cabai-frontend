@@ -154,6 +154,7 @@ function Daftar() {
                   id="phone"
                   name="phone"
                   label="Nomor Telpon"
+                  type="number"
                   formikProps={formikProps}
                 />
                 <FormikController

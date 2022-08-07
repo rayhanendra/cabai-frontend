@@ -18,7 +18,7 @@ import { optionsGradeCabai, optionsPedagang } from 'utils/constants';
 import { useEffect } from 'react';
 import userService from 'services/user.service';
 import { useState } from 'react';
-import { addTransaksi } from 'redux/slices/transaksi';
+import { addTransaksiPetani } from 'redux/slices/transaksi';
 import { today } from 'utils/MomentFormat';
 import { RadioButtonChecked, RadioButtonUnchecked } from '@mui/icons-material';
 import urlFormData from 'utils/urlFormData';
@@ -60,7 +60,10 @@ function CatatTransaksiPetani() {
       userService
         .getPedagangByRole(tipePembeli)
         .then((response) => {
-          const data = response.data.pedagang.map(({ _id, name }) => ({ id: _id, label: name }));
+          const data = response.data.data.map(({ _id, name }) => ({
+            id: _id,
+            label: name
+          }));
           setNamaPembeli(data);
           setLoading(false);
         })
@@ -121,7 +124,7 @@ function CatatTransaksiPetani() {
     }
 
     setLoading(true);
-    dispatch(addTransaksi(formData))
+    dispatch(addTransaksiPetani(formData))
       .unwrap()
       .then(() => {
         navigate(-1);

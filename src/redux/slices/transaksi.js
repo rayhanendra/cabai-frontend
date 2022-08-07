@@ -13,11 +13,23 @@ export const getTransaksiById = createAsyncThunk('transaksi/getTransaksiById', a
   return response.data;
 });
 
-export const addTransaksi = createAsyncThunk('transaksi/addTransaksi', async (data, thunkAPI) => {
-  const response = await TransaksiService.addTransaksi(data);
-  thunkAPI.dispatch(setMessage(response));
-  return response.data;
-});
+export const addTransaksiPetani = createAsyncThunk(
+  'transaksi/addTransaksiPetani',
+  async (data, thunkAPI) => {
+    const response = await TransaksiService.addTransaksiPetani(data);
+    thunkAPI.dispatch(setMessage(response));
+    return response.data;
+  }
+);
+
+export const addTransaksiPedagang = createAsyncThunk(
+  'transaksi/addTransaksiPedagang',
+  async (data, thunkAPI) => {
+    const response = await TransaksiService.addTransaksiPedagang(data);
+    thunkAPI.dispatch(setMessage(response));
+    return response.data;
+  }
+);
 
 export const deleteTransaksi = createAsyncThunk(
   'transaksi/deleteTransaksi',
@@ -58,7 +70,22 @@ export const editTransaksi = createAsyncThunk(
   }
 );
 
+export const getSummaryPedagang = createAsyncThunk('transaksi/getSummaryPedagang', async () => {
+  const response = await TransaksiService.getSummaryPedagang();
+  return response.data;
+});
+
+export const getSummaryPedagangByMonth = createAsyncThunk(
+  'transaksi/getSummaryPedagangByMonth',
+  async (month) => {
+    const response = await TransaksiService.getSummaryPedagangByMonth(month);
+    return response.data;
+  }
+);
+
 const initialState = {
+  summary: {},
+  summaryByMonth: {},
   status: '',
   konfirmasi: [],
   diajukan: [],
@@ -80,9 +107,15 @@ const transaksiSlice = createSlice({
     });
     builder.addCase(getAllTransaksi.fulfilled, (state, action) => {
       state.status = 'success';
-      state.konfirmasi = action.payload.dibeli.filter((item) => item.statusTransaksi === 0);
-      state.diajukan = action.payload.dijual.filter((item) => item.statusTransaksi === 0);
-      state.riwayat = action.payload.dijual.filter((item) => item.statusTransaksi !== 0);
+      state.konfirmasi = action.payload.data.transaksiBeli.filter(
+        (item) => item.statusTransaksi === 0
+      );
+      state.diajukan = action.payload.data.transaksiJual.filter(
+        (item) => item.statusTransaksi === 0
+      );
+      state.riwayat = action.payload.data.transaksiJual.filter(
+        (item) => item.statusTransaksi !== 0
+      );
     });
     builder.addCase(getAllTransaksi.rejected, (state) => {
       state.status = 'failed';
@@ -97,13 +130,22 @@ const transaksiSlice = createSlice({
     builder.addCase(getTransaksiById.rejected, (state) => {
       state.status = 'failed';
     });
-    builder.addCase(addTransaksi.pending, (state) => {
+    builder.addCase(addTransaksiPetani.pending, (state) => {
       state.status = 'loading';
     });
-    builder.addCase(addTransaksi.fulfilled, (state) => {
+    builder.addCase(addTransaksiPetani.fulfilled, (state) => {
       state.status = 'success';
     });
-    builder.addCase(addTransaksi.rejected, (state) => {
+    builder.addCase(addTransaksiPetani.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(addTransaksiPedagang.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(addTransaksiPedagang.fulfilled, (state) => {
+      state.status = 'success';
+    });
+    builder.addCase(addTransaksiPedagang.rejected, (state) => {
       state.status = 'failed';
     });
     builder.addCase(deleteTransaksi.pending, (state) => {
@@ -140,6 +182,26 @@ const transaksiSlice = createSlice({
       state.status = 'success';
     });
     builder.addCase(editTransaksi.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(getSummaryPedagang.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(getSummaryPedagang.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.summary = action.payload.data;
+    });
+    builder.addCase(getSummaryPedagang.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(getSummaryPedagangByMonth.pending, (state) => {
+      state.status = 'loading';
+    });
+    builder.addCase(getSummaryPedagangByMonth.fulfilled, (state, action) => {
+      state.status = 'success';
+      state.summaryByMonth = action.payload.data;
+    });
+    builder.addCase(getSummaryPedagangByMonth.rejected, (state) => {
       state.status = 'failed';
     });
   }

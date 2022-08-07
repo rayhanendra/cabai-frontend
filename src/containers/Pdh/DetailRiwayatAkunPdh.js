@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { relogById } from 'redux/slices/auth';
+import { deleteSupervisi } from 'redux/slices/supervisi';
 import { getProfile } from 'redux/slices/user';
 import { RoleEnum } from 'utils/constants';
 
@@ -13,6 +14,7 @@ function DetailRiwayatAkunPdh() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [visibility, setVisibility] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { profile } = useSelector((state) => state.user);
 
@@ -21,7 +23,21 @@ function DetailRiwayatAkunPdh() {
   }, [dispatch]);
 
   const handleRelog = () => {
-    dispatch(relogById(id));
+    setLoading(true);
+    dispatch(relogById(id))
+      .unwrap()
+      .then(() => {})
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  };
+
+  const handleDelete = () => {
+    setLoading(true);
+    dispatch(deleteSupervisi(id))
+      .unwrap()
+      .then(() => {})
+      .catch(() => {})
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -69,10 +85,10 @@ function DetailRiwayatAkunPdh() {
           <Typography variant="h5">{profile?.provinsi.name}</Typography>
         </Box>
         <Stack direction="row" justifyContent="space-between" spacing={2}>
-          <BaseButton shape="supervise" onClick={handleRelog}>
+          <BaseButton shape="supervise" onClick={handleRelog} loading={loading} disabled={loading}>
             <Typography variant="h5">Akuisisi Kembali</Typography>
           </BaseButton>
-          <BaseButton shape="delete">
+          <BaseButton shape="delete" onClick={handleDelete} loading={loading} disabled={loading}>
             <Typography variant="h5">Hapus Akun</Typography>
           </BaseButton>
         </Stack>

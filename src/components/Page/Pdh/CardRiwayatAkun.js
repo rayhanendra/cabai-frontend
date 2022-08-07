@@ -64,7 +64,7 @@ const CardRiwayatAkun = (props) => {
         <Divider light />
         <Stack direction="row" justifyContent="space-between">
           <BaseButton shape="outlined">
-            <Typography variant="h5" onClick={() => navigate(`detail-riwayat-akun/${item?._id}`)}>
+            <Typography variant="h5" onClick={() => navigate(`detail/${item?._id}`)}>
               Detail
             </Typography>
           </BaseButton>

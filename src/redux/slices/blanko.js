@@ -13,12 +13,6 @@ export const getBlankoById = createAsyncThunk('blanko/getBlankoById', async (id)
   return response.data;
 });
 
-export const addBlanko = createAsyncThunk('blanko/addBlanko', async (data, thunkAPI) => {
-  const response = await BlankoService.addBlanko(data);
-  thunkAPI.dispatch(setMessage(response));
-  return response.data;
-});
-
 export const checkBlanko = createAsyncThunk('blanko/checkBlanko', async (data, thunkAPI) => {
   const response = await BlankoService.checkBlanko(data);
   thunkAPI.dispatch(setMessage(response));
@@ -55,15 +49,6 @@ const blankoSlice = createSlice({
       state.detail = action.payload.data;
     });
     builder.addCase(getBlankoById.rejected, (state) => {
-      state.status = 'failed';
-    });
-    builder.addCase(addBlanko.pending, (state) => {
-      state.status = 'loading';
-    });
-    builder.addCase(addBlanko.fulfilled, (state) => {
-      state.status = 'success';
-    });
-    builder.addCase(addBlanko.rejected, (state) => {
       state.status = 'failed';
     });
     builder.addCase(checkBlanko.pending, (state) => {

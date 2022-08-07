@@ -18,7 +18,7 @@ import { optionsTipeCabai, optionsPedagang, optionsGradeCabai } from 'utils/cons
 import { useEffect } from 'react';
 import userService from 'services/user.service';
 import { useState } from 'react';
-import { addTransaksi } from 'redux/slices/transaksi';
+import { addTransaksiPedagang } from 'redux/slices/transaksi';
 import { today } from 'utils/MomentFormat';
 import { RadioButtonChecked, RadioButtonUnchecked } from '@mui/icons-material';
 import urlFormData from 'utils/urlFormData';
@@ -39,7 +39,10 @@ function CatatTransaksiPedagang() {
       userService
         .getPedagangByRole(tipePembeli)
         .then((response) => {
-          const data = response.data.pedagang.map(({ _id, name }) => ({ id: _id, label: name }));
+          const data = response.data.data.map(({ _id, name }) => ({
+            id: _id,
+            label: name
+          }));
           setNamaPembeli(data);
           setLoading(false);
         })
@@ -91,7 +94,7 @@ function CatatTransaksiPedagang() {
     }
 
     setLoading(true);
-    dispatch(addTransaksi(formData))
+    dispatch(addTransaksiPedagang(formData))
       .unwrap()
       .then(() => {
         navigate(-1);
@@ -105,7 +108,6 @@ function CatatTransaksiPedagang() {
       <BaseHeader label="Catat Transaksi Cabai" to={-1} />
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
         {(formikProps) => {
-          console.log('formikprops', formikProps);
           setTipePedagang(formikProps.values.tipePembeli);
           return (
             <Form>

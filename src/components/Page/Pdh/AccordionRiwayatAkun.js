@@ -44,6 +44,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 const AccordionRiwayatAkun = (props) => {
   const { item, index = 0 } = props;
+  console.log(item);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [expanded, setExpanded] = React.useState(`panel0`);
@@ -54,7 +55,11 @@ const AccordionRiwayatAkun = (props) => {
 
   const handleRelog = () => {
     const formData = new URLSearchParams();
-    formData.append('email', item.email);
+    if (item.email) {
+      formData.append('email', item.email);
+    } else if (item.phone) {
+      formData.append('phone', item.phone);
+    }
     formData.append('password', item.password);
 
     dispatch(relog(formData));
@@ -71,7 +76,7 @@ const AccordionRiwayatAkun = (props) => {
             <BaseButton shape="outlined">
               <Typography
                 variant="h5"
-                onClick={() => navigate(`/pdh/riwayat-akun/detail-riwayat-akun/${item?._id}`)}>
+                onClick={() => navigate(`/pdh/riwayat-akun/detail/${item?._id}`)}>
                 Detail
               </Typography>
             </BaseButton>

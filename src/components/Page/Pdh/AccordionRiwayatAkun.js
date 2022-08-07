@@ -56,9 +56,9 @@ const AccordionRiwayatAkun = (props) => {
   const handleRelog = () => {
     const formData = new URLSearchParams();
     if (item.email) {
-      formData.append('email', item.email);
+      formData.append('account', item.email);
     } else if (item.phone) {
-      formData.append('phone', item.phone);
+      formData.append('account', item.phone);
     }
     formData.append('password', item.password);
 

@@ -1,5 +1,5 @@
 export const formatRupiah = (money) => {
-  if (!money) return;
+  // if (!money) return;
   return new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',

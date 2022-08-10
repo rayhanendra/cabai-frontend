@@ -47,11 +47,13 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   });
 });
 
+// Supervisi
+
 export const relog = createAsyncThunk('auth/relog', async (data, thunkAPI) => {
   try {
     const response = await SupervisiService.relog(data);
     thunkAPI.dispatch(setMessage(response));
-    return { user: response.data.user };
+    return { user: response.data.data.petani };
   } catch (error) {
     const response = error.response;
     thunkAPI.dispatch(setMessage(response));
@@ -63,7 +65,7 @@ export const relogById = createAsyncThunk('auth/relogById', async (id, thunkAPI)
   try {
     const response = await SupervisiService.relogById(id);
     thunkAPI.dispatch(setMessage(response));
-    return { user: response.data.user };
+    return { user: response.data.data.petani };
   } catch (error) {
     const response = error.response;
     thunkAPI.dispatch(setMessage(response));
@@ -127,19 +129,36 @@ const authSlice = createSlice({
       state.user = null;
       state.parentUser = null;
     });
+    builder.addCase(relog.pending, (state, action) => {
+      state.status = 'loading';
+    });
     builder.addCase(relog.fulfilled, (state, action) => {
       state.isLoggedIn = true;
       state.user = action.payload.user;
+      state.status = 'success';
     });
     builder.addCase(relog.rejected, (state) => {
-      state.isLoggedIn = false;
+      state.status = 'failed';
+    });
+    builder.addCase(relogById.pending, (state, action) => {
+      state.status = 'loading';
+    });
+    builder.addCase(relogById.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.status = 'success';
+    });
+    builder.addCase(relogById.rejected, (state) => {
+      state.status = 'failed';
+    });
+    builder.addCase(addSupervisi.pending, (state, action) => {
+      state.status = 'loading';
     });
     builder.addCase(addSupervisi.fulfilled, (state, action) => {
-      state.isLoggedIn = true;
       state.user = action.payload.user;
+      state.status = 'success';
     });
     builder.addCase(addSupervisi.rejected, (state) => {
-      state.isLoggedIn = false;
+      state.status = 'failed';
     });
   }
 });

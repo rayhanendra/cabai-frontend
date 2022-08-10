@@ -8,7 +8,6 @@ import { momentFormat } from 'utils/MomentFormat';
 
 const CardRiwayatTransaksi = (props) => {
   const { item } = props;
-  console.log(item);
 
   const navigate = useNavigate();
 

@@ -43,7 +43,7 @@ function BerandaPedagang() {
           <Stack gap={2}>
             <Stack bgcolor="primary.main" color="white" p={2} gap={1} borderRadius={2}>
               <Typography>Total Pendapatan</Typography>
-              <Typography variant="h5">{formatRupiah(summary?.totalPendapatan) ?? 0}</Typography>
+              <Typography variant="h5">{formatRupiah(summary?.totalPendapatan)}</Typography>
             </Stack>
             <Box gap={2} py={2} bgcolor="dark.light" borderRadius={2}>
               <Box
@@ -57,23 +57,25 @@ function BerandaPedagang() {
                 <Typography variant="h5">Transaksi</Typography>
               </Box>
               <Stack gap={2} p={2}>
-                <Stack direction="row" justifyContent="space-between">
+                <Stack direction="row" gap={5}>
                   <Box>
                     <Typography>Total Transaksi</Typography>
                     <Typography variant="h5">{summary?.countTransaksiAll}</Typography>
                   </Box>
+                  <Box>
+                    <Typography>Transaksi Sukses</Typography>
+                    <Typography variant="h5" color="primary.main">
+                      {summary?.countTransaksiSuksesAll}
+                    </Typography>
+                  </Box>
                 </Stack>
                 <Box>
                   <Typography>Total Cabai Dibeli</Typography>
-                  <Typography variant="h5" color="primary.main">
-                    {summary?.countTransaksiSuksesBeli ?? 0}
-                  </Typography>
+                  <Typography variant="h5">{summary?.countTransaksiSuksesBeli}</Typography>
                 </Box>
                 <Box>
                   <Typography>Total Cabai Dijual</Typography>
-                  <Typography variant="h5" color="primary.main">
-                    {summary?.countTransaksiSuksesJual ?? 0}
-                  </Typography>
+                  <Typography variant="h5">{summary?.countTransaksiSuksesJual}</Typography>
                 </Box>
               </Stack>
             </Box>
@@ -92,38 +94,38 @@ function BerandaPedagang() {
                 <Box>
                   <Typography>Pendapatan Cabai Merah Besar</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summary?.pendapatanCMB) ?? 0}
+                    {formatRupiah(summary?.pendapatanCMB)}
                   </Typography>
                 </Box>
                 <Box>
                   <Typography>Pendapatan Cabai Merah Keriting</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summary?.pendapatanCMK) ?? 0}
+                    {formatRupiah(summary?.pendapatanCMK)}
                   </Typography>
                 </Box>
                 <Box>
                   <Typography>Pendapatan Cabai Rawit Merah</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summary?.pendapatanCRM) ?? 0}
+                    {formatRupiah(summary?.pendapatanCRM)}
                   </Typography>
                 </Box>
                 <Typography variant="h5">Total Pendapatan</Typography>
                 <Stack direction="row" gap={1}>
                   <Typography>Pembelian</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summary?.totalPendapatan) ?? 0}
+                    {formatRupiah(summary?.totalPendapatan)}
                   </Typography>
                 </Stack>
                 <Stack direction="row" gap={1}>
                   <Typography>Penjualan</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summary?.totalPendapatan) ?? 0}
+                    {formatRupiah(summary?.totalPendapatan)}
                   </Typography>
                 </Stack>
                 <Stack direction="row" gap={1}>
                   <Typography>Pendapatan</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summary?.totalPendapatan) ?? 0}
+                    {formatRupiah(summary?.totalPendapatan)}
                   </Typography>
                 </Stack>
               </Stack>
@@ -149,9 +151,7 @@ function BerandaPedagang() {
             </Formik>
             <Stack bgcolor="primary.main" color="white" p={2} gap={1} borderRadius={2}>
               <Typography>Pendapatan Bulan Ini</Typography>
-              <Typography variant="h5">
-                {formatRupiah(summaryByMonth?.totalPendapatan) ?? 0}
-              </Typography>
+              <Typography variant="h5">{formatRupiah(summaryByMonth?.totalPendapatan)}</Typography>
             </Stack>
             <Box gap={2} py={2} bgcolor="dark.light" borderRadius={2}>
               <Box
@@ -165,22 +165,28 @@ function BerandaPedagang() {
                 <Typography variant="h5">Transaksi</Typography>
               </Box>
               <Stack gap={2} p={2}>
-                <Stack direction="row" justifyContent="space-between">
+                <Stack direction="row" gap={5}>
                   <Box>
                     <Typography>Total Transaksi</Typography>
                     <Typography variant="h5">{summaryByMonth?.countTransaksiAll}</Typography>
+                  </Box>
+                  <Box>
+                    <Typography>Transaksi Sukses</Typography>
+                    <Typography variant="h5" color="primary.main">
+                      {summaryByMonth?.countTransaksiSuksesAll}
+                    </Typography>
                   </Box>
                 </Stack>
                 <Box>
                   <Typography>Total Cabai Dibeli</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summaryByMonth?.totalPembelian) ?? 0}
+                    {summaryByMonth?.countTransaksiSuksesBeli}
                   </Typography>
                 </Box>
                 <Box>
                   <Typography>Total Cabai Dijual</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summaryByMonth?.totalPenjualan) ?? 0}
+                    {summaryByMonth?.countTransaksiSuksesJual}
                   </Typography>
                 </Box>
               </Stack>
@@ -200,38 +206,38 @@ function BerandaPedagang() {
                 <Box>
                   <Typography>Pendapatan Cabai Merah Besar</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summaryByMonth?.pendapatanCMB) ?? 0}
+                    {formatRupiah(summaryByMonth?.pendapatanCMB)}
                   </Typography>
                 </Box>
                 <Box>
                   <Typography>Pendapatan Cabai Merah Keriting</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summaryByMonth?.pendapatanCMK) ?? 0}
+                    {formatRupiah(summaryByMonth?.pendapatanCMK)}
                   </Typography>
                 </Box>
                 <Box>
                   <Typography>Pendapatan Cabai Rawit Merah</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summaryByMonth?.pendapatanCRM) ?? 0}
+                    {formatRupiah(summaryByMonth?.pendapatanCRM)}
                   </Typography>
                 </Box>
                 <Typography variant="h5">Total Pendapatan</Typography>
                 <Stack direction="row" gap={1}>
                   <Typography>Pembelian</Typography>
-                  <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summaryByMonth?.totalPendapatan) ?? 0}
+                  <Typography variant="h5">
+                    {formatRupiah(summaryByMonth?.totalPembelian)}
                   </Typography>
                 </Stack>
                 <Stack direction="row" gap={1}>
                   <Typography>Penjualan</Typography>
-                  <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summaryByMonth?.totalPendapatan) ?? 0}
+                  <Typography variant="h5">
+                    {formatRupiah(summaryByMonth?.totalPenjualan)}
                   </Typography>
                 </Stack>
                 <Stack direction="row" gap={1}>
                   <Typography>Pendapatan</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summaryByMonth?.totalPendapatan) ?? 0}
+                    {formatRupiah(summaryByMonth?.totalPendapatan)}
                   </Typography>
                 </Stack>
               </Stack>

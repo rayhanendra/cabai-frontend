@@ -23,7 +23,7 @@ const relog = async (data) => {
     .post(API_URL + 'supervisi/masuk', data, { headers: authHeader() })
     .then((response) => {
       if (response.data) {
-        localStorage.setItem('child-user', JSON.stringify(response.data.user));
+        localStorage.setItem('child-user', JSON.stringify(response.data.data.petani));
         localStorage.setItem('child-token', response.data.token);
       }
       return response;
@@ -35,7 +35,7 @@ const relogById = async (id) => {
     .post(API_URL + 'supervisi/masuk/' + id, {}, { headers: authHeader() })
     .then((response) => {
       if (response.data) {
-        localStorage.setItem('child-user', JSON.stringify(response.data.user));
+        localStorage.setItem('child-user', JSON.stringify(response.data.data.petani));
         localStorage.setItem('child-token', response.data.token);
       }
       return response;
@@ -43,7 +43,7 @@ const relogById = async (id) => {
 };
 
 const deleteSupervisi = async (id) => {
-  return axios.delete(API_URL + 'supervisi/hapus/' + id, {}, { headers: authHeader() });
+  return axios.delete(API_URL + 'supervisi/hapus/' + id, { headers: authHeader() });
 };
 
 const supervisiService = {

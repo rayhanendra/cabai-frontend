@@ -10,8 +10,8 @@ export const getAllSupervisi = createAsyncThunk('supervisi/getAllSupervisi', asy
 
 export const deleteSupervisi = createAsyncThunk(
   'supervisi/deleteSupervisi',
-  async (_, thunkAPI) => {
-    const response = await SupervisiService.deleteSupervisi();
+  async (id, thunkAPI) => {
+    const response = await SupervisiService.deleteSupervisi(id);
     thunkAPI.dispatch(setMessage(response));
     return response.data;
   }

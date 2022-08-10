@@ -4,7 +4,7 @@ import BaseButton from 'components/Base/BaseButton';
 import BaseHeader from 'components/Base/BaseHeader';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { relogById } from 'redux/slices/auth';
 import { deleteSupervisi } from 'redux/slices/supervisi';
 import { getProfile } from 'redux/slices/user';
@@ -13,6 +13,7 @@ import { RoleEnum } from 'utils/constants';
 function DetailRiwayatAkunPdh() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [visibility, setVisibility] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +29,7 @@ function DetailRiwayatAkunPdh() {
       .unwrap()
       .then(() => {})
       .catch(() => {})
-      .finally(() => setLoading(false));
+      .finally(() => {});
   };
 
   const handleDelete = () => {
@@ -37,7 +38,9 @@ function DetailRiwayatAkunPdh() {
       .unwrap()
       .then(() => {})
       .catch(() => {})
-      .finally(() => setLoading(false));
+      .finally(() => {
+        navigate(-1);
+      });
   };
 
   return (

@@ -44,7 +44,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 const AccordionRiwayatAkun = (props) => {
   const { item, index = 0 } = props;
-  console.log(item);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [expanded, setExpanded] = React.useState(`panel0`);

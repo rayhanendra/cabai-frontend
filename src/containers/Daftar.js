@@ -58,6 +58,9 @@ function Daftar() {
 
   // Notes: perlu diroute berdasarkan role
 
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
   const initialValues = {};
   const validationSchema = yup.object({
     name: yup
@@ -67,8 +70,9 @@ function Daftar() {
       .required('Nama diperlukan'),
     phone: yup
       .string('Masukkan no.telp')
-      .min(7, 'Panjang no.telp minimal 7 angka')
-      .max(14, 'Panjang no.telp maksimal 14 angka')
+      .matches(phoneRegExp, 'Harap masukkan angka no.telp')
+      // .min(7, 'Panjang no.telp minimal 7 angka')
+      // .max(14, 'Panjang no.telp maksimal 14 angka')
       .required('No.telp diperlukan'),
     email: yup.string('Masukkan email').email('Masukkan email dengan benar'),
     password: yup
@@ -154,7 +158,6 @@ function Daftar() {
                   id="phone"
                   name="phone"
                   label="Nomor Telpon"
-                  type="number"
                   formikProps={formikProps}
                 />
                 <FormikController

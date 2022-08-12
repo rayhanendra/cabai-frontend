@@ -1,5 +1,5 @@
 export const formatRupiah = (money) => {
-  // if (!money) return;
+  if (!money) return 0;
   return new Intl.NumberFormat('id-ID', {
     style: 'currency',
     currency: 'IDR',
@@ -8,7 +8,7 @@ export const formatRupiah = (money) => {
 };
 
 export const formatNumber = (number) => {
-  if (!number) return;
+  if (!number) return 0;
 
   const toComma = number.toString().replace('.', ',');
   const toDecimal = toComma.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');

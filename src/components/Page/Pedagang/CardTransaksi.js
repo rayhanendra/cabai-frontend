@@ -53,31 +53,33 @@ const CardTransaksi = (props) => {
         link={`detail-transaksi/${type}/${item._id}`}
         status={item.statusTransaksi}>
         <Stack gap={1}>
-          {type === 'diajukan' && (
-            <Stack direction="row" alignItems="center" justifyContent="space-between">
-              <Typography>Pembeli</Typography>
-              <Typography variant="h6">
-                {item.pembeli ? item.pembeli?.name : item.namaPembeli} (
-                {item.pembeli ? RoleEnum[item.pembeli?.role] : RoleEnum[item.tipePembeli]}){' '}
-              </Typography>
-            </Stack>
+          {(type === 'diajukan' || type === 'diterima') && (
+            <>
+              <Stack direction="row" alignItems="center" justifyContent="space-between">
+                <Typography>Pembeli</Typography>
+                <Typography variant="h6">
+                  {item.pembeli ? item.pembeli?.name : item.namaPembeli}
+                </Typography>
+              </Stack>
+              <Stack direction="row" alignItems="center" justifyContent="space-between">
+                <Typography>Tipe Pembeli</Typography>
+                <Typography variant="h6">
+                  {item.pembeli ? RoleEnum[item.pembeli?.role] : RoleEnum[item.tipePembeli]}
+                </Typography>
+              </Stack>
+            </>
           )}
           {type === 'konfirmasi' && (
-            <Stack direction="row" alignItems="center" justifyContent="space-between">
-              <Typography>Penjual</Typography>
-              <Typography variant="h6">
-                {item.penjual?.name} ({RoleEnum[item.penjual?.role]})
-              </Typography>
-            </Stack>
-          )}
-          {type === 'diterima' && (
-            <Stack direction="row" alignItems="center" justifyContent="space-between">
-              <Typography>Pembeli</Typography>
-              <Typography variant="h6">
-                {item.pembeli ? item.pembeli?.name : item.namaPembeli} (
-                {item.pembeli ? RoleEnum[item.pembeli?.role] : RoleEnum[item.tipePembeli]})
-              </Typography>
-            </Stack>
+            <>
+              <Stack direction="row" alignItems="center" justifyContent="space-between">
+                <Typography>Penjual</Typography>
+                <Typography variant="h6">{item.penjual?.name}</Typography>
+              </Stack>
+              <Stack direction="row" alignItems="center" justifyContent="space-between">
+                <Typography>Tipe Penjual</Typography>
+                <Typography variant="h6">{RoleEnum[item.penjual?.role]}</Typography>
+              </Stack>
+            </>
           )}
           <Stack direction="row" justifyContent="space-between">
             <Typography>Tipe Cabai</Typography>

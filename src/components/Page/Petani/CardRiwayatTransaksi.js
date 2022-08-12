@@ -15,9 +15,11 @@ const CardRiwayatTransaksi = (props) => {
     { label: 'Status', value: StatusEnum[item.statusTransaksi] },
     {
       label: 'Pembeli',
-      value: `${item.pembeli?.name ?? item.namaPembeli} (${
-        RoleEnum[item.pembeli?.role] ?? item.tipePembeli
-      })`
+      value: item.pembeli?.name ?? item.namaPembeli
+    },
+    {
+      label: 'Tipe Pembeli',
+      value: RoleEnum[item.pembeli?.role] ?? item.tipePembeli
     },
     { label: 'Tipe Cabai', value: CabaiEnum[item.lahan.tipeCabai] },
     { label: 'Jumlah Dijual', value: `${formatNumber(item.jumlahDijual)} kuintal` },

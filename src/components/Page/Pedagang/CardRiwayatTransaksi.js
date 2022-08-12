@@ -24,10 +24,11 @@ const CardRiwayatTransaksi = (props) => {
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Typography>Pembeli</Typography>
-        <Typography variant="h6">
-          {item.pembeli?.name ?? item.namaPembeli} (
-          {RoleEnum[item.pembeli?.role] ?? item.tipePembeli})
-        </Typography>
+        <Typography variant="h6">{item.pembeli?.name ?? item.namaPembeli}</Typography>
+      </Box>
+      <Box display="flex" alignItems="center" justifyContent="space-between">
+        <Typography>Tipe Pembeli</Typography>
+        <Typography variant="h6">{RoleEnum[item.pembeli?.role] ?? item.tipePembeli}</Typography>
       </Box>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Typography>Tipe Cabai</Typography>

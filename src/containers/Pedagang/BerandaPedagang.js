@@ -113,13 +113,13 @@ function BerandaPedagang() {
                 <Stack direction="row" gap={1}>
                   <Typography>Pembelian</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summary?.totalPendapatan)}
+                    {formatRupiah(summary?.totalPembelian)}
                   </Typography>
                 </Stack>
                 <Stack direction="row" gap={1}>
                   <Typography>Penjualan</Typography>
                   <Typography variant="h5" color="primary.main">
-                    {formatRupiah(summary?.totalPendapatan)}
+                    {formatRupiah(summary?.totalPenjualan)}
                   </Typography>
                 </Stack>
                 <Stack direction="row" gap={1}>

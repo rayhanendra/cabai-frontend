@@ -1,6 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material';
 import BaseButton from 'components/Base/BaseButton';
 import BaseCard from 'components/Base/BaseCard';
+import { Fragment } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTransaksi } from 'redux/slices/transaksi';
@@ -22,6 +23,8 @@ const CardTransaksi = (props) => {
       .finally(() => setLoading(false));
   };
 
+  if (!item) return <Fragment />;
+
   return (
     <>
       <BaseCard
@@ -31,9 +34,16 @@ const CardTransaksi = (props) => {
         <Stack gap={1}>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
             <Typography>Pembeli</Typography>
+            <Box width="200px" display="flex" justifyContent="flex-end">
+              <Typography variant="h6" noWrap>
+                {item.pembeli ? item.pembeli?.name : item.namaPembeli}
+              </Typography>
+            </Box>
+          </Stack>
+          <Stack direction="row" justifyContent="space-between">
+            <Typography>Tipe Pembeli</Typography>
             <Typography variant="h6">
-              {item.pembeli ? item.pembeli?.name : item.namaPembeli} (
-              {item.pembeli ? RoleEnum[item.pembeli?.role] : RoleEnum[item.tipePembeli]})
+              {item.pembeli ? RoleEnum[item.pembeli?.role] : RoleEnum[item.tipePembeli]}
             </Typography>
           </Stack>
           <Stack direction="row" justifyContent="space-between">

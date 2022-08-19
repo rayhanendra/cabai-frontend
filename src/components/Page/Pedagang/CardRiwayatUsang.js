@@ -3,7 +3,6 @@ import BaseCard from 'components/Base/BaseCard';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CabaiEnum } from 'utils/constants';
-import { formatRupiah } from 'utils/Formats';
 import { momentFormat } from 'utils/MomentFormat';
 
 const CardRiwayatUsang = (props) => {
@@ -27,8 +26,10 @@ const CardRiwayatUsang = (props) => {
           <Typography variant="h6">{item.jumlahUsang} kuintal</Typography>
         </Stack>
         <Stack direction="row" justifyContent="space-between">
-          <Typography>Harga Jual Per kg</Typography>
-          <Typography variant="h6">{formatRupiah(item.hargaJual)}</Typography>
+          <Typography>Pemanfaatan Cabai</Typography>
+          <Typography variant="h6" textTransform="capitalize">
+            {item.pemanfaatan}
+          </Typography>
         </Stack>
       </Stack>
     </BaseCard>

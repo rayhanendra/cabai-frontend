@@ -90,7 +90,9 @@ const initialState = {
   konfirmasi: [],
   diajukan: [],
   detail: {},
-  riwayat: []
+  riwayat: [],
+  riwayatPenjualan: [],
+  riwayatPembelian: []
 };
 const transaksiSlice = createSlice({
   name: 'transaksi',
@@ -114,6 +116,12 @@ const transaksiSlice = createSlice({
         (item) => item.statusTransaksi === 0
       );
       state.riwayat = action.payload.data.transaksiJual.filter(
+        (item) => item.statusTransaksi !== 0
+      );
+      state.riwayatPenjualan = action.payload.data.transaksiJual.filter(
+        (item) => item.statusTransaksi !== 0
+      );
+      state.riwayatPembelian = action.payload.data.transaksiBeli.filter(
         (item) => item.statusTransaksi !== 0
       );
     });

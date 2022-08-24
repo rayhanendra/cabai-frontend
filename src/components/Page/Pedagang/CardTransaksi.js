@@ -62,7 +62,7 @@ const CardTransaksi = (props) => {
                 </Typography>
               </Stack>
               <Stack direction="row" alignItems="center" justifyContent="space-between">
-                <Typography>Tipe Pembeli</Typography>
+                <Typography>Peran</Typography>
                 <Typography variant="h6">
                   {item.pembeli ? RoleEnum[item.pembeli?.role] : RoleEnum[item.tipePembeli]}
                 </Typography>
@@ -76,7 +76,7 @@ const CardTransaksi = (props) => {
                 <Typography variant="h6">{item.penjual?.name}</Typography>
               </Stack>
               <Stack direction="row" alignItems="center" justifyContent="space-between">
-                <Typography>Tipe Penjual</Typography>
+                <Typography>Peran</Typography>
                 <Typography variant="h6">{RoleEnum[item.penjual?.role]}</Typography>
               </Stack>
             </>

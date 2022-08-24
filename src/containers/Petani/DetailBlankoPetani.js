@@ -18,34 +18,34 @@ function DetailBlankoPetani() {
   }, [dispatch]);
 
   const data = [
-    { label: 'Tipe Cabai', value: CabaiEnum[detail[0]?.tipeCabai] },
+    { label: 'Tipe Cabai', value: CabaiEnum[detail?.tipeCabai] },
     {
       label: 'Luas tanaman akhir bulan lalu (ha)',
-      value: detail[0]?.luasTanamanAkhirBulanLalu ?? '-'
+      value: detail?.luasTanamanAkhirBulanLalu ?? '-'
     },
-    { label: 'Luas panen habis / dibongkar (ha)', value: detail[0]?.luasPanenHabis ?? '-' },
-    { label: 'Luas panen belum habis (ha)', value: detail[0]?.luasPanenBelumHabis ?? '-' },
-    { label: 'Luas rusak/tidak berhasil/puso (ha)', value: detail[0]?.luasRusak ?? '-' },
-    { label: 'Luas penanaman baru/tambah tanam (ha)', value: detail[0]?.luasPenanamanBaru ?? '-' },
+    { label: 'Luas panen habis / dibongkar (ha)', value: detail?.luasPanenHabis ?? '-' },
+    { label: 'Luas panen belum habis (ha)', value: detail?.luasPanenBelumHabis ?? '-' },
+    { label: 'Luas rusak/tidak berhasil/puso (ha)', value: detail?.luasRusak ?? '-' },
+    { label: 'Luas penanaman baru/tambah tanam (ha)', value: detail?.luasPenanamanBaru ?? '-' },
     {
       label: 'Luas tanaman akhir bulan laporan (ha)',
-      value: detail[0]?.luasTanamanAkhirBulanLaporan ?? '-'
+      value: detail?.luasTanamanAkhirBulanLaporan ?? '-'
     },
     {
       label: 'Produksi dipanen habis/dibongkar (kuintal)',
-      value: detail[0]?.prodPanenHabis ?? '-'
+      value: detail?.prodPanenHabis ?? '-'
     },
-    { label: 'Produksi belum habis (kuintal)', value: detail[0]?.prodBelumHabis ?? '-' },
+    { label: 'Produksi belum habis (kuintal)', value: detail?.prodBelumHabis ?? '-' },
     {
       label: 'Rata-rata harga jual petani per kilogram (Rupiah)',
-      value: detail[0]?.rataHargaJual ?? '-'
+      value: detail?.rataHargaJual ?? '-'
     }
   ];
 
   if (!detail) return <Fragment />;
   return (
     <>
-      <BaseHeader label={`Blanko - ${momentFormat(detail[0]?.tanggalPencatatan)}`} to={-1} />
+      <BaseHeader label={`Blanko - ${momentFormat(detail?.tanggalPencatatan)}`} to={-1} />
       <BaseListDetail data={data} p={2} />
     </>
   );

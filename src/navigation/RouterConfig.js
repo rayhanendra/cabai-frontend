@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
+import DaftarPdh from 'containers/DaftarPdh';
 import Daftar from 'containers/Daftar';
 import Masuk from 'containers/Masuk';
 
@@ -28,6 +29,7 @@ import CatatUsangPedagang from 'containers/Pedagang/CatatUsangPedagang';
 import DetailUsangPedagang from 'containers/Pedagang/DetailUsangPedagang';
 import DetailTransaksiPedagang from 'containers/Pedagang/DetailTransaksiPedagang';
 import UlangTransaksiPedagang from 'containers/Pedagang/UlangTransaksiPedagang';
+import DetailRiwayatTransaksiPedagang from 'containers/Pedagang/DetailRiwayatTransaksiPedagang';
 
 import IndexPdh from 'containers/Pdh/IndexPdh';
 import BerandaPdh from 'containers/Pdh/BerandaPdh';
@@ -48,6 +50,7 @@ function RouterConfig() {
       <Route path="/" element={<Navigate to={'masuk'} replace />} />
       <Route path="masuk" element={<Masuk />} />
       <Route path="daftar" element={<Daftar />} />
+      <Route path="daftar-pdh" element={<DaftarPdh />} />
 
       {/* Petani */}
       <Route path="petani" element={<IndexPetani />}>
@@ -82,7 +85,10 @@ function RouterConfig() {
         <Route path="usang/catat-usang" element={<CatatUsangPedagang />} />
         <Route path="usang/detail-usang/:id" element={<DetailUsangPedagang />} />
         <Route path="riwayat" element={<RiwayatPedagang />} />
-        <Route path="riwayat/detail-transaksi/:id" element={<DetailTransaksiPedagang />} />
+        <Route
+          path="riwayat/detail-transaksi/:type/:id"
+          element={<DetailRiwayatTransaksiPedagang />}
+        />
         <Route path="riwayat/detail-usang/:id" element={<DetailUsangPedagang />} />
         <Route path="data-diri" element={<DataDiri />} />
       </Route>

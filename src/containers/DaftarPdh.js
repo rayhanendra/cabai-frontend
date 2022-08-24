@@ -7,11 +7,10 @@ import React, { useEffect, useState } from 'react';
 import { signup } from 'redux/slices/auth';
 import { Navigate, useNavigate } from 'react-router-dom';
 import FormikController from 'components/Formik/FormikController';
-import { optionsRole } from 'utils/constants';
 import UserService from 'services/user.service';
 // import BaseLoadingRedux from 'components/Base/BaseLoadingRedux';
 
-function Daftar() {
+function DaftarPdh() {
   const { message } = useSelector((state) => state.message);
   const { isLoggedIn, user: currentUser } = useSelector((state) => state.auth);
 
@@ -90,12 +89,10 @@ function Daftar() {
     //   }
     // ),
     kecamatan: yup.number('Masukkan kecamatan').required('Kecamatan diperlukan'),
-    alamat: yup.string('Masukkan alamat').required('alamat diperlukan'),
-    role: yup.string('Masukkan peran').required('Peran diperlukan')
+    alamat: yup.string('Masukkan alamat').required('alamat diperlukan')
   });
   const onSubmit = (formValue) => {
-    const { name, phone, email, password, provinsi, kecamatan, kabupaten, alamat, role } =
-      formValue;
+    const { name, phone, email, password, provinsi, kecamatan, kabupaten, alamat } = formValue;
     setLoading(true);
     dispatch(
       signup({
@@ -108,7 +105,7 @@ function Daftar() {
           kecamatan,
           kabupaten,
           alamat,
-          role
+          role: 'pdh'
         }
       })
     )
@@ -135,10 +132,10 @@ function Daftar() {
           return (
             <Form>
               <Stack gap={2} p={2}>
-                <Typography variant="h4">Daftar</Typography>
-                <Typography>
-                  Menjadi bagian dalam proses distribusi didaerahmu dan tawarkan cabai terbaikmu !{' '}
-                </Typography>
+                <Box>
+                  <Typography variant="h4">Daftar sebagai</Typography>
+                  <Typography variant="h4">Petugas Data Hortikultura (PDH)</Typography>
+                </Box>
                 {message && (
                   <div>
                     <div role="alert">{message}</div>
@@ -235,15 +232,6 @@ function Daftar() {
                   label="Alamat"
                   formikProps={formikProps}
                 />
-                <FormikController
-                  control="select"
-                  fullWidth
-                  id="peran"
-                  name="role"
-                  label="Peran"
-                  options={optionsRole}
-                  formikProps={formikProps}
-                />
                 <Box mt={2}>
                   <BaseButton
                     fullWidth
@@ -270,4 +258,4 @@ function Daftar() {
   );
 }
 
-export default Daftar;
+export default DaftarPdh;

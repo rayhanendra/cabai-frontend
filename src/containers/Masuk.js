@@ -50,7 +50,7 @@ function Masuk() {
       <Box display="flex" flexDirection="column" gap={2} p={2}>
         <Typography variant="h4">Masuk</Typography>
         <Typography>
-          Masuk kedalam akunmu untuk akses stok cabai cabai kamu dan jualkan ke orang sekitarmu !
+          Masuk kedalam akunmu untuk akses transaksi cabai kamu dan jualkan ke orang sekitarmu!
         </Typography>
         {message && (
           <div>
@@ -91,14 +91,21 @@ function Masuk() {
       <Box display="flex" flexDirection="column" alignItems="center" gap={1} p={2}>
         <Typography display="inline-block" variant="body2">
           Belum punya akun?
-          <Link onClick={() => navigate('/daftar')}> Daftar!</Link>
+          <Link onClick={() => navigate('/daftar')} style={{ cursor: 'pointer' }}>
+            {' '}
+            Daftar!
+          </Link>
         </Typography>
-        <Link color="black">
+        {/* <Link color="black">
           <Typography variant="body2">Lupa password?</Typography>
-        </Link>
-        <Link underline="none">
-          <Typography variant="body2">Masuk sebagai Guest</Typography>
-        </Link>
+        </Link> */}
+        <Typography display="inline-block" variant="body2">
+          Daftar sebagai
+          <Link onClick={() => navigate('/daftar-pdh')} style={{ cursor: 'pointer' }}>
+            {' '}
+            Petugas Data Hortikultura (PDH)
+          </Link>
+        </Typography>
       </Box>
     </>
   );

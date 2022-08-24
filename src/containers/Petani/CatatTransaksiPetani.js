@@ -210,7 +210,7 @@ function CatatTransaksiPetani() {
                               checkedIcon={<RadioButtonChecked />}
                             />
                           }
-                          label={<Typography variant="h6">Pedangang punya akun</Typography>}
+                          label={<Typography variant="h6">Pedagang punya akun</Typography>}
                           labelPlacement="end"
                         />
 
@@ -256,7 +256,7 @@ function CatatTransaksiPetani() {
                               checkedIcon={<RadioButtonChecked />}
                             />
                           }
-                          label={<Typography variant="h6">Pedangang belum punya akun</Typography>}
+                          label={<Typography variant="h6">Pedagang belum punya akun</Typography>}
                           labelPlacement="end"
                         />
 

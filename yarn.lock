@@ -3291,6 +3291,11 @@ commondir@^1.0.1:
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
+compare-versions@^4.1.2:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/compare-versions/-/compare-versions-4.1.4.tgz#3571f4d610924d4414846a4183d386c8f3d51112"
+  integrity sha512-FemMreK9xNyL8gQevsdRMrvO4lFCkQP7qbuktn1q8ndcNk1+0mz7lgE7b/sNvbhVgY4w6tMN1FDp6aADjqw2rw==
+
 compressible@~2.0.16:
   version "2.0.18"
   resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.18.tgz#af53cca6b070d4c3c0750fbd77286a6d7cc46fba"
@@ -7395,6 +7400,14 @@ react-app-polyfill@^3.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
+
+react-cache-buster@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-cache-buster/-/react-cache-buster-0.1.6.tgz#4b1709f3bacf461c3c89bf4ec2dd89c194b8d620"
+  integrity sha512-+ADgfJbrl7XGdPtmnGEgWIOM9t5zWD4ywkfX7Hm7kI4TrezH8TVI2WgZf+DeVQhAq9nZpRQsewU+8naDKPZIeQ==
+  dependencies:
+    compare-versions "^4.1.2"
+    prop-types "^15.7.2"
 
 react-dev-utils@^12.0.0:
   version "12.0.0"

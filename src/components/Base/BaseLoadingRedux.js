@@ -5,7 +5,13 @@ import { useSelector } from 'react-redux';
 export function FacebookCircularProgress() {
   return (
     <Box position="relative">
-      <CircularProgress variant="indeterminate" disableShrink size={40} thickness={4} />
+      <CircularProgress
+        color="primary"
+        variant="indeterminate"
+        disableShrink
+        size={40}
+        thickness={4}
+      />
     </Box>
   );
 }
@@ -27,7 +33,12 @@ function BaseLoadingRedux(props) {
           bgcolor: 'white',
           zIndex: 999
         }}>
-        <Box display="flex" alignItems="center" justifyContent="center" height="100vh">
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          height="100vh"
+          color="primary">
           <FacebookCircularProgress />
         </Box>
       </Box>

@@ -1,5 +1,5 @@
 import { SupervisedUserCircleRounded } from '@mui/icons-material';
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import BaseButton from 'components/Base/BaseButton';
 import TheProfileHeader from 'components/Base/TheProfileHeader';
 import AccordionRiwayatAkun from 'components/Page/Pdh/AccordionRiwayatAkun';
@@ -36,12 +36,6 @@ function BerandaPdh() {
         <Box>
           <Stack direction="row" alignItems="center" justifyContent="space-between" mb={1}>
             <Typography variant="h5">Riwayat Akun</Typography>
-            <Button
-              sx={{ textTransform: 'none' }}
-              color="secondary"
-              onClick={() => navigate('/pdh/riwayat-akun')}>
-              <Typography variant="h6">Lihat Semua</Typography>
-            </Button>
           </Stack>
           <Stack gap={1}>
             {petani?.map((item, index) => (

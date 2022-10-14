@@ -49,7 +49,7 @@ function DataDiriPdh() {
           <Typography variant="h5">{profile?.kecamatan?.name}</Typography>
         </Box>
         <Box>
-          <Typography>Kecamatan</Typography>
+          <Typography>Kabupaten</Typography>
           <Typography variant="h5">{profile?.kabupaten?.name}</Typography>
         </Box>
         <Box>
